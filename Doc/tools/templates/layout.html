@@ -39,6 +39,18 @@
 {% block extrahead %}
     <link rel="shortcut icon" type="image/png" href="{{ pathto('_static/py.png', 1) }}" />
     <link rel="canonical" href="https://docs.python.org/3/{{pagename}}.html" />
+    {%- if not embedded -%}
+    <script type="text/javascript">
+    $(document).ready(function() {
+      var base = 'https://docs.python.org/{{ version }}/{{ pagename }}.html';
+      $('a.headerlink').each(function() {
+        var html = '<a href="' + base + $(this).attr('href') +
+                   '" title="原文へのリンク"><small>(原文)</small></a>';
+        $(this).after(html);
+      })
+    });
+    </script>
+    {%- endif -%}
     {% if builder != "htmlhelp" %}
     {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>{% endif %}
     {% if versionswitcher is defined and not embedded %}<script type="text/javascript" src="{{ pathto('_static/version_switch.js', 1) }}"></script>{% endif %}
