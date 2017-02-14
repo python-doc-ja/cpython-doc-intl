@@ -1,0 +1,2324 @@
+[main]
+host = https://www.transifex.com
+type = PO
+
+[python-35.about]
+file_filter = locale/<lang>/LC_MESSAGES/about.po
+source_file = locale/pot/about.pot
+source_lang = en
+
+[python-35.bugs]
+file_filter = locale/<lang>/LC_MESSAGES/bugs.po
+source_file = locale/pot/bugs.pot
+source_lang = en
+
+[python-35.glossary-1]
+file_filter = locale/<lang>/LC_MESSAGES/glossary.po
+source_file = locale/pot/glossary.pot
+source_lang = en
+
+[python-35.sphinx]
+file_filter = locale/<lang>/LC_MESSAGES/sphinx.po
+source_file = locale/pot/sphinx.pot
+source_lang = en
+
+[python-35.license]
+file_filter = locale/<lang>/LC_MESSAGES/license.po
+source_file = locale/pot/license.pot
+source_lang = en
+
+[python-35.contents]
+file_filter = locale/<lang>/LC_MESSAGES/contents.po
+source_file = locale/pot/contents.pot
+source_lang = en
+
+[python-35.copyright]
+file_filter = locale/<lang>/LC_MESSAGES/copyright.po
+source_file = locale/pot/copyright.pot
+source_lang = en
+
+[python-35.c-api--type]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/type.po
+source_file = locale/pot/c-api/type.pot
+source_lang = en
+
+[python-35.c-api--slice]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/slice.po
+source_file = locale/pot/c-api/slice.pot
+source_lang = en
+
+[python-35.c-api--codec]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/codec.po
+source_file = locale/pot/c-api/codec.pot
+source_lang = en
+
+[python-35.c-api--weakref]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/weakref.po
+source_file = locale/pot/c-api/weakref.pot
+source_lang = en
+
+[python-35.c-api--intro]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/intro.po
+source_file = locale/pot/c-api/intro.pot
+source_lang = en
+
+[python-35.c-api--long]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/long.po
+source_file = locale/pot/c-api/long.pot
+source_lang = en
+
+[python-35.c-api--reflection]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/reflection.po
+source_file = locale/pot/c-api/reflection.pot
+source_lang = en
+
+[python-35.c-api--sys]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/sys.po
+source_file = locale/pot/c-api/sys.pot
+source_lang = en
+
+[python-35.c-api--buffer]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/buffer.po
+source_file = locale/pot/c-api/buffer.pot
+source_lang = en
+
+[python-35.c-api--conversion]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/conversion.po
+source_file = locale/pot/c-api/conversion.pot
+source_lang = en
+
+[python-35.c-api--structures]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/structures.po
+source_file = locale/pot/c-api/structures.pot
+source_lang = en
+
+[python-35.c-api--concrete]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/concrete.po
+source_file = locale/pot/c-api/concrete.pot
+source_lang = en
+
+[python-35.c-api--float]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/float.po
+source_file = locale/pot/c-api/float.pot
+source_lang = en
+
+[python-35.c-api--gen]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/gen.po
+source_file = locale/pot/c-api/gen.pot
+source_lang = en
+
+[python-35.c-api--coro]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/coro.po
+source_file = locale/pot/c-api/coro.pot
+source_lang = en
+
+[python-35.c-api--set]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/set.po
+source_file = locale/pot/c-api/set.pot
+source_lang = en
+
+[python-35.c-api--init]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/init.po
+source_file = locale/pot/c-api/init.pot
+source_lang = en
+
+[python-35.c-api--objimpl]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/objimpl.po
+source_file = locale/pot/c-api/objimpl.pot
+source_lang = en
+
+[python-35.c-api--memoryview]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/memoryview.po
+source_file = locale/pot/c-api/memoryview.pot
+source_lang = en
+
+[python-35.c-api--iter]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/iter.po
+source_file = locale/pot/c-api/iter.pot
+source_lang = en
+
+[python-35.c-api--veryhigh]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/veryhigh.po
+source_file = locale/pot/c-api/veryhigh.pot
+source_lang = en
+
+[python-35.c-api--unicode]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/unicode.po
+source_file = locale/pot/c-api/unicode.pot
+source_lang = en
+
+[python-35.c-api--bytes]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/bytes.po
+source_file = locale/pot/c-api/bytes.pot
+source_lang = en
+
+[python-35.c-api--bytearray]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/bytearray.po
+source_file = locale/pot/c-api/bytearray.pot
+source_lang = en
+
+[python-35.c-api--marshal]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/marshal.po
+source_file = locale/pot/c-api/marshal.pot
+source_lang = en
+
+[python-35.c-api--number]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/number.po
+source_file = locale/pot/c-api/number.pot
+source_lang = en
+
+[python-35.c-api--exceptions]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/exceptions.po
+source_file = locale/pot/c-api/exceptions.pot
+source_lang = en
+
+[python-35.c-api--stable]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/stable.po
+source_file = locale/pot/c-api/stable.pot
+source_lang = en
+
+[python-35.c-api--datetime]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/datetime.po
+source_file = locale/pot/c-api/datetime.pot
+source_lang = en
+
+[python-35.c-api--objbuffer]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/objbuffer.po
+source_file = locale/pot/c-api/objbuffer.pot
+source_lang = en
+
+[python-35.c-api--dict]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/dict.po
+source_file = locale/pot/c-api/dict.pot
+source_lang = en
+
+[python-35.c-api--abstract]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/abstract.po
+source_file = locale/pot/c-api/abstract.pot
+source_lang = en
+
+[python-35.c-api--apiabiversion]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/apiabiversion.po
+source_file = locale/pot/c-api/apiabiversion.pot
+source_lang = en
+
+[python-35.c-api--allocation]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/allocation.po
+source_file = locale/pot/c-api/allocation.pot
+source_lang = en
+
+[python-35.c-api--typeobj]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/typeobj.po
+source_file = locale/pot/c-api/typeobj.pot
+source_lang = en
+
+[python-35.c-api--code]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/code.po
+source_file = locale/pot/c-api/code.pot
+source_lang = en
+
+[python-35.c-api--import]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/import.po
+source_file = locale/pot/c-api/import.pot
+source_lang = en
+
+[python-35.c-api--module]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/module.po
+source_file = locale/pot/c-api/module.pot
+source_lang = en
+
+[python-35.c-api--sequence]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/sequence.po
+source_file = locale/pot/c-api/sequence.pot
+source_lang = en
+
+[python-35.c-api--function]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/function.po
+source_file = locale/pot/c-api/function.pot
+source_lang = en
+
+[python-35.c-api--list]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/list.po
+source_file = locale/pot/c-api/list.pot
+source_lang = en
+
+[python-35.c-api--complex]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/complex.po
+source_file = locale/pot/c-api/complex.pot
+source_lang = en
+
+[python-35.c-api--iterator]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/iterator.po
+source_file = locale/pot/c-api/iterator.pot
+source_lang = en
+
+[python-35.c-api--index]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/index.po
+source_file = locale/pot/c-api/index.pot
+source_lang = en
+
+[python-35.c-api--bool]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/bool.po
+source_file = locale/pot/c-api/bool.pot
+source_lang = en
+
+[python-35.c-api--descriptor]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/descriptor.po
+source_file = locale/pot/c-api/descriptor.pot
+source_lang = en
+
+[python-35.c-api--file]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/file.po
+source_file = locale/pot/c-api/file.pot
+source_lang = en
+
+[python-35.c-api--arg]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/arg.po
+source_file = locale/pot/c-api/arg.pot
+source_lang = en
+
+[python-35.c-api--mapping]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/mapping.po
+source_file = locale/pot/c-api/mapping.pot
+source_lang = en
+
+[python-35.c-api--capsule]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/capsule.po
+source_file = locale/pot/c-api/capsule.pot
+source_lang = en
+
+[python-35.c-api--none]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/none.po
+source_file = locale/pot/c-api/none.pot
+source_lang = en
+
+[python-35.c-api--refcounting]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/refcounting.po
+source_file = locale/pot/c-api/refcounting.pot
+source_lang = en
+
+[python-35.c-api--utilities]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/utilities.po
+source_file = locale/pot/c-api/utilities.pot
+source_lang = en
+
+[python-35.c-api--method]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/method.po
+source_file = locale/pot/c-api/method.pot
+source_lang = en
+
+[python-35.c-api--object]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/object.po
+source_file = locale/pot/c-api/object.pot
+source_lang = en
+
+[python-35.c-api--memory]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/memory.po
+source_file = locale/pot/c-api/memory.pot
+source_lang = en
+
+[python-35.c-api--gcsupport]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/gcsupport.po
+source_file = locale/pot/c-api/gcsupport.pot
+source_lang = en
+
+[python-35.c-api--tuple]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/tuple.po
+source_file = locale/pot/c-api/tuple.pot
+source_lang = en
+
+[python-35.c-api--cell]
+file_filter = locale/<lang>/LC_MESSAGES/c-api/cell.po
+source_file = locale/pot/c-api/cell.pot
+source_lang = en
+
+[python-35.extending--newtypes]
+file_filter = locale/<lang>/LC_MESSAGES/extending/newtypes.po
+source_file = locale/pot/extending/newtypes.pot
+source_lang = en
+
+[python-35.extending--embedding]
+file_filter = locale/<lang>/LC_MESSAGES/extending/embedding.po
+source_file = locale/pot/extending/embedding.pot
+source_lang = en
+
+[python-35.extending--extending]
+file_filter = locale/<lang>/LC_MESSAGES/extending/extending.po
+source_file = locale/pot/extending/extending.pot
+source_lang = en
+
+[python-35.extending--index]
+file_filter = locale/<lang>/LC_MESSAGES/extending/index.po
+source_file = locale/pot/extending/index.pot
+source_lang = en
+
+[python-35.extending--building]
+file_filter = locale/<lang>/LC_MESSAGES/extending/building.po
+source_file = locale/pot/extending/building.pot
+source_lang = en
+
+[python-35.extending--windows]
+file_filter = locale/<lang>/LC_MESSAGES/extending/windows.po
+source_file = locale/pot/extending/windows.pot
+source_lang = en
+
+[python-35.library--asyncio-stream]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-stream.po
+source_file = locale/pot/library/asyncio-stream.pot
+source_lang = en
+
+[python-35.library--binhex]
+file_filter = locale/<lang>/LC_MESSAGES/library/binhex.po
+source_file = locale/pot/library/binhex.pot
+source_lang = en
+
+[python-35.library--ast]
+file_filter = locale/<lang>/LC_MESSAGES/library/ast.po
+source_file = locale/pot/library/ast.pot
+source_lang = en
+
+[python-35.library--profile]
+file_filter = locale/<lang>/LC_MESSAGES/library/profile.po
+source_file = locale/pot/library/profile.pot
+source_lang = en
+
+[python-35.library--email_contentmanager]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.contentmanager.po
+source_file = locale/pot/library/email.contentmanager.pot
+source_lang = en
+
+[python-35.library--dummy_threading]
+file_filter = locale/<lang>/LC_MESSAGES/library/dummy_threading.po
+source_file = locale/pot/library/dummy_threading.pot
+source_lang = en
+
+[python-35.library--site]
+file_filter = locale/<lang>/LC_MESSAGES/library/site.po
+source_file = locale/pot/library/site.pot
+source_lang = en
+
+[python-35.library--stringprep]
+file_filter = locale/<lang>/LC_MESSAGES/library/stringprep.po
+source_file = locale/pot/library/stringprep.pot
+source_lang = en
+
+[python-35.library--fileformats]
+file_filter = locale/<lang>/LC_MESSAGES/library/fileformats.po
+source_file = locale/pot/library/fileformats.pot
+source_lang = en
+
+[python-35.library--development]
+file_filter = locale/<lang>/LC_MESSAGES/library/development.po
+source_file = locale/pot/library/development.pot
+source_lang = en
+
+[python-35.library--email_message]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.message.po
+source_file = locale/pot/library/email.message.pot
+source_lang = en
+
+[python-35.library--dbm]
+file_filter = locale/<lang>/LC_MESSAGES/library/dbm.po
+source_file = locale/pot/library/dbm.pot
+source_lang = en
+
+[python-35.library--asynchat]
+file_filter = locale/<lang>/LC_MESSAGES/library/asynchat.po
+source_file = locale/pot/library/asynchat.pot
+source_lang = en
+
+[python-35.library--netrc]
+file_filter = locale/<lang>/LC_MESSAGES/library/netrc.po
+source_file = locale/pot/library/netrc.pot
+source_lang = en
+
+[python-35.library--doctest]
+file_filter = locale/<lang>/LC_MESSAGES/library/doctest.po
+source_file = locale/pot/library/doctest.pot
+source_lang = en
+
+[python-35.library--2to3]
+file_filter = locale/<lang>/LC_MESSAGES/library/2to3.po
+source_file = locale/pot/library/2to3.pot
+source_lang = en
+
+[python-35.library--compileall]
+file_filter = locale/<lang>/LC_MESSAGES/library/compileall.po
+source_file = locale/pot/library/compileall.pot
+source_lang = en
+
+[python-35.library--shlex]
+file_filter = locale/<lang>/LC_MESSAGES/library/shlex.po
+source_file = locale/pot/library/shlex.pot
+source_lang = en
+
+[python-35.library--pty]
+file_filter = locale/<lang>/LC_MESSAGES/library/pty.po
+source_file = locale/pot/library/pty.pot
+source_lang = en
+
+[python-35.library--difflib]
+file_filter = locale/<lang>/LC_MESSAGES/library/difflib.po
+source_file = locale/pot/library/difflib.pot
+source_lang = en
+
+[python-35.library--wsgiref]
+file_filter = locale/<lang>/LC_MESSAGES/library/wsgiref.po
+source_file = locale/pot/library/wsgiref.pot
+source_lang = en
+
+[python-35.library--custominterp]
+file_filter = locale/<lang>/LC_MESSAGES/library/custominterp.po
+source_file = locale/pot/library/custominterp.pot
+source_lang = en
+
+[python-35.library--copyreg]
+file_filter = locale/<lang>/LC_MESSAGES/library/copyreg.po
+source_file = locale/pot/library/copyreg.pot
+source_lang = en
+
+[python-35.library--random]
+file_filter = locale/<lang>/LC_MESSAGES/library/random.po
+source_file = locale/pot/library/random.pot
+source_lang = en
+
+[python-35.library--html]
+file_filter = locale/<lang>/LC_MESSAGES/library/html.po
+source_file = locale/pot/library/html.pot
+source_lang = en
+
+[python-35.library--sqlite3]
+file_filter = locale/<lang>/LC_MESSAGES/library/sqlite3.po
+source_file = locale/pot/library/sqlite3.pot
+source_lang = en
+
+[python-35.library--winreg]
+file_filter = locale/<lang>/LC_MESSAGES/library/winreg.po
+source_file = locale/pot/library/winreg.pot
+source_lang = en
+
+[python-35.library--copy]
+file_filter = locale/<lang>/LC_MESSAGES/library/copy.po
+source_file = locale/pot/library/copy.pot
+source_lang = en
+
+[python-35.library--symtable]
+file_filter = locale/<lang>/LC_MESSAGES/library/symtable.po
+source_file = locale/pot/library/symtable.pot
+source_lang = en
+
+[python-35.library--xml_sax_utils]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.sax.utils.po
+source_file = locale/pot/library/xml.sax.utils.pot
+source_lang = en
+
+[python-35.library--email_generator]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.generator.po
+source_file = locale/pot/library/email.generator.pot
+source_lang = en
+
+[python-35.library--audioop]
+file_filter = locale/<lang>/LC_MESSAGES/library/audioop.po
+source_file = locale/pot/library/audioop.pot
+source_lang = en
+
+[python-35.library--bz2]
+file_filter = locale/<lang>/LC_MESSAGES/library/bz2.po
+source_file = locale/pot/library/bz2.pot
+source_lang = en
+
+[python-35.library--modulefinder]
+file_filter = locale/<lang>/LC_MESSAGES/library/modulefinder.po
+source_file = locale/pot/library/modulefinder.pot
+source_lang = en
+
+[python-35.library--decimal]
+file_filter = locale/<lang>/LC_MESSAGES/library/decimal.po
+source_file = locale/pot/library/decimal.pot
+source_lang = en
+
+[python-35.library--posix]
+file_filter = locale/<lang>/LC_MESSAGES/library/posix.po
+source_file = locale/pot/library/posix.pot
+source_lang = en
+
+[python-35.library--fractions]
+file_filter = locale/<lang>/LC_MESSAGES/library/fractions.po
+source_file = locale/pot/library/fractions.pot
+source_lang = en
+
+[python-35.library--email_policy]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.policy.po
+source_file = locale/pot/library/email.policy.pot
+source_lang = en
+
+[python-35.library--functional]
+file_filter = locale/<lang>/LC_MESSAGES/library/functional.po
+source_file = locale/pot/library/functional.pot
+source_lang = en
+
+[python-35.library--pathlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/pathlib.po
+source_file = locale/pot/library/pathlib.pot
+source_lang = en
+
+[python-35.library--telnetlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/telnetlib.po
+source_file = locale/pot/library/telnetlib.pot
+source_lang = en
+
+[python-35.library--enum]
+file_filter = locale/<lang>/LC_MESSAGES/library/enum.po
+source_file = locale/pot/library/enum.pot
+source_lang = en
+
+[python-35.library--html_parser]
+file_filter = locale/<lang>/LC_MESSAGES/library/html.parser.po
+source_file = locale/pot/library/html.parser.pot
+source_lang = en
+
+[python-35.library--venv]
+file_filter = locale/<lang>/LC_MESSAGES/library/venv.po
+source_file = locale/pot/library/venv.pot
+source_lang = en
+
+[python-35.library--shutil]
+file_filter = locale/<lang>/LC_MESSAGES/library/shutil.po
+source_file = locale/pot/library/shutil.pot
+source_lang = en
+
+[python-35.library--rlcompleter]
+file_filter = locale/<lang>/LC_MESSAGES/library/rlcompleter.po
+source_file = locale/pot/library/rlcompleter.pot
+source_lang = en
+
+[python-35.library--__future__]
+file_filter = locale/<lang>/LC_MESSAGES/library/__future__.po
+source_file = locale/pot/library/__future__.pot
+source_lang = en
+
+[python-35.library--python]
+file_filter = locale/<lang>/LC_MESSAGES/library/python.po
+source_file = locale/pot/library/python.pot
+source_lang = en
+
+[python-35.library--pwd]
+file_filter = locale/<lang>/LC_MESSAGES/library/pwd.po
+source_file = locale/pot/library/pwd.pot
+source_lang = en
+
+[python-35.library--debug]
+file_filter = locale/<lang>/LC_MESSAGES/library/debug.po
+source_file = locale/pot/library/debug.pot
+source_lang = en
+
+[python-35.library--grp]
+file_filter = locale/<lang>/LC_MESSAGES/library/grp.po
+source_file = locale/pot/library/grp.pot
+source_lang = en
+
+[python-35.library--smtplib]
+file_filter = locale/<lang>/LC_MESSAGES/library/smtplib.po
+source_file = locale/pot/library/smtplib.pot
+source_lang = en
+
+[python-35.library--xml_sax_handler]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.sax.handler.po
+source_file = locale/pot/library/xml.sax.handler.pot
+source_lang = en
+
+[python-35.library--unittest]
+file_filter = locale/<lang>/LC_MESSAGES/library/unittest.po
+source_file = locale/pot/library/unittest.pot
+source_lang = en
+
+[python-35.library--weakref]
+file_filter = locale/<lang>/LC_MESSAGES/library/weakref.po
+source_file = locale/pot/library/weakref.pot
+source_lang = en
+
+[python-35.library--uu]
+file_filter = locale/<lang>/LC_MESSAGES/library/uu.po
+source_file = locale/pot/library/uu.pot
+source_lang = en
+
+[python-35.library--xml_sax]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.sax.po
+source_file = locale/pot/library/xml.sax.pot
+source_lang = en
+
+[python-35.library--ossaudiodev]
+file_filter = locale/<lang>/LC_MESSAGES/library/ossaudiodev.po
+source_file = locale/pot/library/ossaudiodev.pot
+source_lang = en
+
+[python-35.library--xml_dom_pulldom]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.dom.pulldom.po
+source_file = locale/pot/library/xml.dom.pulldom.pot
+source_lang = en
+
+[python-35.library--tarfile]
+file_filter = locale/<lang>/LC_MESSAGES/library/tarfile.po
+source_file = locale/pot/library/tarfile.pot
+source_lang = en
+
+[python-35.library--linecache]
+file_filter = locale/<lang>/LC_MESSAGES/library/linecache.po
+source_file = locale/pot/library/linecache.pot
+source_lang = en
+
+[python-35.library--intro]
+file_filter = locale/<lang>/LC_MESSAGES/library/intro.po
+source_file = locale/pot/library/intro.pot
+source_lang = en
+
+[python-35.library--html_entities]
+file_filter = locale/<lang>/LC_MESSAGES/library/html.entities.po
+source_file = locale/pot/library/html.entities.pot
+source_lang = en
+
+[python-35.library--pyexpat]
+file_filter = locale/<lang>/LC_MESSAGES/library/pyexpat.po
+source_file = locale/pot/library/pyexpat.pot
+source_lang = en
+
+[python-35.library--tkinter_scrolledtext]
+file_filter = locale/<lang>/LC_MESSAGES/library/tkinter.scrolledtext.po
+source_file = locale/pot/library/tkinter.scrolledtext.pot
+source_lang = en
+
+[python-35.library--pyclbr]
+file_filter = locale/<lang>/LC_MESSAGES/library/pyclbr.po
+source_file = locale/pot/library/pyclbr.pot
+source_lang = en
+
+[python-35.library--urllib_error]
+file_filter = locale/<lang>/LC_MESSAGES/library/urllib.error.po
+source_file = locale/pot/library/urllib.error.pot
+source_lang = en
+
+[python-35.library--chunk]
+file_filter = locale/<lang>/LC_MESSAGES/library/chunk.po
+source_file = locale/pot/library/chunk.pot
+source_lang = en
+
+[python-35.library--logging_handlers]
+file_filter = locale/<lang>/LC_MESSAGES/library/logging.handlers.po
+source_file = locale/pot/library/logging.handlers.pot
+source_lang = en
+
+[python-35.library--email_charset]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.charset.po
+source_file = locale/pot/library/email.charset.pot
+source_lang = en
+
+[python-35.library--argparse]
+file_filter = locale/<lang>/LC_MESSAGES/library/argparse.po
+source_file = locale/pot/library/argparse.pot
+source_lang = en
+
+[python-35.library--datatypes]
+file_filter = locale/<lang>/LC_MESSAGES/library/datatypes.po
+source_file = locale/pot/library/datatypes.pot
+source_lang = en
+
+[python-35.library--unittest_mock]
+file_filter = locale/<lang>/LC_MESSAGES/library/unittest.mock.po
+source_file = locale/pot/library/unittest.mock.pot
+source_lang = en
+
+[python-35.library--pkgutil]
+file_filter = locale/<lang>/LC_MESSAGES/library/pkgutil.po
+source_file = locale/pot/library/pkgutil.pot
+source_lang = en
+
+[python-35.library--queue]
+file_filter = locale/<lang>/LC_MESSAGES/library/queue.po
+source_file = locale/pot/library/queue.pot
+source_lang = en
+
+[python-35.library--faulthandler]
+file_filter = locale/<lang>/LC_MESSAGES/library/faulthandler.po
+source_file = locale/pot/library/faulthandler.pot
+source_lang = en
+
+[python-35.library--crypt]
+file_filter = locale/<lang>/LC_MESSAGES/library/crypt.po
+source_file = locale/pot/library/crypt.pot
+source_lang = en
+
+[python-35.library--msilib]
+file_filter = locale/<lang>/LC_MESSAGES/library/msilib.po
+source_file = locale/pot/library/msilib.pot
+source_lang = en
+
+[python-35.library--zipapp]
+file_filter = locale/<lang>/LC_MESSAGES/library/zipapp.po
+source_file = locale/pot/library/zipapp.pot
+source_lang = en
+
+[python-35.library--binascii]
+file_filter = locale/<lang>/LC_MESSAGES/library/binascii.po
+source_file = locale/pot/library/binascii.pot
+source_lang = en
+
+[python-35.library--math]
+file_filter = locale/<lang>/LC_MESSAGES/library/math.po
+source_file = locale/pot/library/math.pot
+source_lang = en
+
+[python-35.library--logging]
+file_filter = locale/<lang>/LC_MESSAGES/library/logging.po
+source_file = locale/pot/library/logging.pot
+source_lang = en
+
+[python-35.library--array]
+file_filter = locale/<lang>/LC_MESSAGES/library/array.po
+source_file = locale/pot/library/array.pot
+source_lang = en
+
+[python-35.library--language]
+file_filter = locale/<lang>/LC_MESSAGES/library/language.po
+source_file = locale/pot/library/language.pot
+source_lang = en
+
+[python-35.library--winsound]
+file_filter = locale/<lang>/LC_MESSAGES/library/winsound.po
+source_file = locale/pot/library/winsound.pot
+source_lang = en
+
+[python-35.library--glob]
+file_filter = locale/<lang>/LC_MESSAGES/library/glob.po
+source_file = locale/pot/library/glob.pot
+source_lang = en
+
+[python-35.library--curses]
+file_filter = locale/<lang>/LC_MESSAGES/library/curses.po
+source_file = locale/pot/library/curses.pot
+source_lang = en
+
+[python-35.library--runpy]
+file_filter = locale/<lang>/LC_MESSAGES/library/runpy.po
+source_file = locale/pot/library/runpy.pot
+source_lang = en
+
+[python-35.library--configparser]
+file_filter = locale/<lang>/LC_MESSAGES/library/configparser.po
+source_file = locale/pot/library/configparser.pot
+source_lang = en
+
+[python-35.library--sys]
+file_filter = locale/<lang>/LC_MESSAGES/library/sys.po
+source_file = locale/pot/library/sys.pot
+source_lang = en
+
+[python-35.library--asyncio-task]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-task.po
+source_file = locale/pot/library/asyncio-task.pot
+source_lang = en
+
+[python-35.library--text]
+file_filter = locale/<lang>/LC_MESSAGES/library/text.po
+source_file = locale/pot/library/text.pot
+source_lang = en
+
+[python-35.library--cmd]
+file_filter = locale/<lang>/LC_MESSAGES/library/cmd.po
+source_file = locale/pot/library/cmd.pot
+source_lang = en
+
+[python-35.library--markup]
+file_filter = locale/<lang>/LC_MESSAGES/library/markup.po
+source_file = locale/pot/library/markup.pot
+source_lang = en
+
+[python-35.library--tk]
+file_filter = locale/<lang>/LC_MESSAGES/library/tk.po
+source_file = locale/pot/library/tk.pot
+source_lang = en
+
+[python-35.library--textwrap]
+file_filter = locale/<lang>/LC_MESSAGES/library/textwrap.po
+source_file = locale/pot/library/textwrap.pot
+source_lang = en
+
+[python-35.library--distutils]
+file_filter = locale/<lang>/LC_MESSAGES/library/distutils.po
+source_file = locale/pot/library/distutils.pot
+source_lang = en
+
+[python-35.library--concurrent]
+file_filter = locale/<lang>/LC_MESSAGES/library/concurrent.po
+source_file = locale/pot/library/concurrent.pot
+source_lang = en
+
+[python-35.library--syslog]
+file_filter = locale/<lang>/LC_MESSAGES/library/syslog.po
+source_file = locale/pot/library/syslog.pot
+source_lang = en
+
+[python-35.library--errno]
+file_filter = locale/<lang>/LC_MESSAGES/library/errno.po
+source_file = locale/pot/library/errno.pot
+source_lang = en
+
+[python-35.library--string]
+file_filter = locale/<lang>/LC_MESSAGES/library/string.po
+source_file = locale/pot/library/string.pot
+source_lang = en
+
+[python-35.library--turtle]
+file_filter = locale/<lang>/LC_MESSAGES/library/turtle.po
+source_file = locale/pot/library/turtle.pot
+source_lang = en
+
+[python-35.library--io]
+file_filter = locale/<lang>/LC_MESSAGES/library/io.po
+source_file = locale/pot/library/io.pot
+source_lang = en
+
+[python-35.library--archiving]
+file_filter = locale/<lang>/LC_MESSAGES/library/archiving.po
+source_file = locale/pot/library/archiving.pot
+source_lang = en
+
+[python-35.library--dis]
+file_filter = locale/<lang>/LC_MESSAGES/library/dis.po
+source_file = locale/pot/library/dis.pot
+source_lang = en
+
+[python-35.library--email_errors]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.errors.po
+source_file = locale/pot/library/email.errors.pot
+source_lang = en
+
+[python-35.library--cgi]
+file_filter = locale/<lang>/LC_MESSAGES/library/cgi.po
+source_file = locale/pot/library/cgi.pot
+source_lang = en
+
+[python-35.library--frameworks]
+file_filter = locale/<lang>/LC_MESSAGES/library/frameworks.po
+source_file = locale/pot/library/frameworks.pot
+source_lang = en
+
+[python-35.library--hashlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/hashlib.po
+source_file = locale/pot/library/hashlib.pot
+source_lang = en
+
+[python-35.library--sysconfig]
+file_filter = locale/<lang>/LC_MESSAGES/library/sysconfig.po
+source_file = locale/pot/library/sysconfig.pot
+source_lang = en
+
+[python-35.library--concurrent_futures]
+file_filter = locale/<lang>/LC_MESSAGES/library/concurrent.futures.po
+source_file = locale/pot/library/concurrent.futures.pot
+source_lang = en
+
+[python-35.library--ipc]
+file_filter = locale/<lang>/LC_MESSAGES/library/ipc.po
+source_file = locale/pot/library/ipc.pot
+source_lang = en
+
+[python-35.library--mailcap]
+file_filter = locale/<lang>/LC_MESSAGES/library/mailcap.po
+source_file = locale/pot/library/mailcap.pot
+source_lang = en
+
+[python-35.library--contextlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/contextlib.po
+source_file = locale/pot/library/contextlib.pot
+source_lang = en
+
+[python-35.library--macpath]
+file_filter = locale/<lang>/LC_MESSAGES/library/macpath.po
+source_file = locale/pot/library/macpath.pot
+source_lang = en
+
+[python-35.library--gc]
+file_filter = locale/<lang>/LC_MESSAGES/library/gc.po
+source_file = locale/pot/library/gc.pot
+source_lang = en
+
+[python-35.library--email_parser]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.parser.po
+source_file = locale/pot/library/email.parser.pot
+source_lang = en
+
+[python-35.library--pydoc]
+file_filter = locale/<lang>/LC_MESSAGES/library/pydoc.po
+source_file = locale/pot/library/pydoc.pot
+source_lang = en
+
+[python-35.library--getopt]
+file_filter = locale/<lang>/LC_MESSAGES/library/getopt.po
+source_file = locale/pot/library/getopt.pot
+source_lang = en
+
+[python-35.library--test]
+file_filter = locale/<lang>/LC_MESSAGES/library/test.po
+source_file = locale/pot/library/test.pot
+source_lang = en
+
+[python-35.library--unittest_mock-examples]
+file_filter = locale/<lang>/LC_MESSAGES/library/unittest.mock-examples.po
+source_file = locale/pot/library/unittest.mock-examples.pot
+source_lang = en
+
+[python-35.library--email_iterators]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.iterators.po
+source_file = locale/pot/library/email.iterators.pot
+source_lang = en
+
+[python-35.library--formatter]
+file_filter = locale/<lang>/LC_MESSAGES/library/formatter.po
+source_file = locale/pot/library/formatter.pot
+source_lang = en
+
+[python-35.library--mimetypes]
+file_filter = locale/<lang>/LC_MESSAGES/library/mimetypes.po
+source_file = locale/pot/library/mimetypes.pot
+source_lang = en
+
+[python-35.library--fcntl]
+file_filter = locale/<lang>/LC_MESSAGES/library/fcntl.po
+source_file = locale/pot/library/fcntl.pot
+source_lang = en
+
+[python-35.library--codeop]
+file_filter = locale/<lang>/LC_MESSAGES/library/codeop.po
+source_file = locale/pot/library/codeop.pot
+source_lang = en
+
+[python-35.library--http_client]
+file_filter = locale/<lang>/LC_MESSAGES/library/http.client.po
+source_file = locale/pot/library/http.client.pot
+source_lang = en
+
+[python-35.library--xml_etree_elementtree]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.etree.elementtree.po
+source_file = locale/pot/library/xml.etree.elementtree.pot
+source_lang = en
+
+[python-35.library--undoc]
+file_filter = locale/<lang>/LC_MESSAGES/library/undoc.po
+source_file = locale/pot/library/undoc.pot
+source_lang = en
+
+[python-35.library--xmlrpc_server]
+file_filter = locale/<lang>/LC_MESSAGES/library/xmlrpc.server.po
+source_file = locale/pot/library/xmlrpc.server.pot
+source_lang = en
+
+[python-35.library--colorsys]
+file_filter = locale/<lang>/LC_MESSAGES/library/colorsys.po
+source_file = locale/pot/library/colorsys.pot
+source_lang = en
+
+[python-35.library--struct]
+file_filter = locale/<lang>/LC_MESSAGES/library/struct.po
+source_file = locale/pot/library/struct.pot
+source_lang = en
+
+[python-35.library--os]
+file_filter = locale/<lang>/LC_MESSAGES/library/os.po
+source_file = locale/pot/library/os.pot
+source_lang = en
+
+[python-35.library--asyncio-sync]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-sync.po
+source_file = locale/pot/library/asyncio-sync.pot
+source_lang = en
+
+[python-35.library--email_header]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.header.po
+source_file = locale/pot/library/email.header.pot
+source_lang = en
+
+[python-35.library--xml_dom]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.dom.po
+source_file = locale/pot/library/xml.dom.pot
+source_lang = en
+
+[python-35.library--mm]
+file_filter = locale/<lang>/LC_MESSAGES/library/mm.po
+source_file = locale/pot/library/mm.pot
+source_lang = en
+
+[python-35.library--tempfile]
+file_filter = locale/<lang>/LC_MESSAGES/library/tempfile.po
+source_file = locale/pot/library/tempfile.pot
+source_lang = en
+
+[python-35.library--bisect]
+file_filter = locale/<lang>/LC_MESSAGES/library/bisect.po
+source_file = locale/pot/library/bisect.pot
+source_lang = en
+
+[python-35.library--token]
+file_filter = locale/<lang>/LC_MESSAGES/library/token.po
+source_file = locale/pot/library/token.pot
+source_lang = en
+
+[python-35.library--inspect]
+file_filter = locale/<lang>/LC_MESSAGES/library/inspect.po
+source_file = locale/pot/library/inspect.pot
+source_lang = en
+
+[python-35.library--imp]
+file_filter = locale/<lang>/LC_MESSAGES/library/imp.po
+source_file = locale/pot/library/imp.pot
+source_lang = en
+
+[python-35.library--xmlrpc]
+file_filter = locale/<lang>/LC_MESSAGES/library/xmlrpc.po
+source_file = locale/pot/library/xmlrpc.pot
+source_lang = en
+
+[python-35.library--allos]
+file_filter = locale/<lang>/LC_MESSAGES/library/allos.po
+source_file = locale/pot/library/allos.pot
+source_lang = en
+
+[python-35.library--functools]
+file_filter = locale/<lang>/LC_MESSAGES/library/functools.po
+source_file = locale/pot/library/functools.pot
+source_lang = en
+
+[python-35.library--itertools]
+file_filter = locale/<lang>/LC_MESSAGES/library/itertools.po
+source_file = locale/pot/library/itertools.pot
+source_lang = en
+
+[python-35.library--urllib_request]
+file_filter = locale/<lang>/LC_MESSAGES/library/urllib.request.po
+source_file = locale/pot/library/urllib.request.pot
+source_lang = en
+
+[python-35.library--tokenize]
+file_filter = locale/<lang>/LC_MESSAGES/library/tokenize.po
+source_file = locale/pot/library/tokenize.pot
+source_lang = en
+
+[python-35.library--ipaddress]
+file_filter = locale/<lang>/LC_MESSAGES/library/ipaddress.po
+source_file = locale/pot/library/ipaddress.pot
+source_lang = en
+
+[python-35.library--warnings]
+file_filter = locale/<lang>/LC_MESSAGES/library/warnings.po
+source_file = locale/pot/library/warnings.pot
+source_lang = en
+
+[python-35.library--stat]
+file_filter = locale/<lang>/LC_MESSAGES/library/stat.po
+source_file = locale/pot/library/stat.pot
+source_lang = en
+
+[python-35.library--msvcrt]
+file_filter = locale/<lang>/LC_MESSAGES/library/msvcrt.po
+source_file = locale/pot/library/msvcrt.pot
+source_lang = en
+
+[python-35.library--concurrency]
+file_filter = locale/<lang>/LC_MESSAGES/library/concurrency.po
+source_file = locale/pot/library/concurrency.pot
+source_lang = en
+
+[python-35.library--_thread]
+file_filter = locale/<lang>/LC_MESSAGES/library/_thread.po
+source_file = locale/pot/library/_thread.pot
+source_lang = en
+
+[python-35.library--spwd]
+file_filter = locale/<lang>/LC_MESSAGES/library/spwd.po
+source_file = locale/pot/library/spwd.pot
+source_lang = en
+
+[python-35.library--selectors]
+file_filter = locale/<lang>/LC_MESSAGES/library/selectors.po
+source_file = locale/pot/library/selectors.pot
+source_lang = en
+
+[python-35.library--optparse]
+file_filter = locale/<lang>/LC_MESSAGES/library/optparse.po
+source_file = locale/pot/library/optparse.pot
+source_lang = en
+
+[python-35.library--distribution]
+file_filter = locale/<lang>/LC_MESSAGES/library/distribution.po
+source_file = locale/pot/library/distribution.pot
+source_lang = en
+
+[python-35.library--collections]
+file_filter = locale/<lang>/LC_MESSAGES/library/collections.po
+source_file = locale/pot/library/collections.pot
+source_lang = en
+
+[python-35.library--signal]
+file_filter = locale/<lang>/LC_MESSAGES/library/signal.po
+source_file = locale/pot/library/signal.pot
+source_lang = en
+
+[python-35.library--ensurepip]
+file_filter = locale/<lang>/LC_MESSAGES/library/ensurepip.po
+source_file = locale/pot/library/ensurepip.pot
+source_lang = en
+
+[python-35.library--uuid]
+file_filter = locale/<lang>/LC_MESSAGES/library/uuid.po
+source_file = locale/pot/library/uuid.pot
+source_lang = en
+
+[python-35.library--logging_config]
+file_filter = locale/<lang>/LC_MESSAGES/library/logging.config.po
+source_file = locale/pot/library/logging.config.pot
+source_lang = en
+
+[python-35.library--getpass]
+file_filter = locale/<lang>/LC_MESSAGES/library/getpass.po
+source_file = locale/pot/library/getpass.pot
+source_lang = en
+
+[python-35.library--asyncio-eventloop]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-eventloop.po
+source_file = locale/pot/library/asyncio-eventloop.pot
+source_lang = en
+
+[python-35.library--hmac]
+file_filter = locale/<lang>/LC_MESSAGES/library/hmac.po
+source_file = locale/pot/library/hmac.pot
+source_lang = en
+
+[python-35.library--codecs]
+file_filter = locale/<lang>/LC_MESSAGES/library/codecs.po
+source_file = locale/pot/library/codecs.pot
+source_lang = en
+
+[python-35.library--keyword]
+file_filter = locale/<lang>/LC_MESSAGES/library/keyword.po
+source_file = locale/pot/library/keyword.pot
+source_lang = en
+
+[python-35.library--marshal]
+file_filter = locale/<lang>/LC_MESSAGES/library/marshal.po
+source_file = locale/pot/library/marshal.pot
+source_lang = en
+
+[python-35.library--http_server]
+file_filter = locale/<lang>/LC_MESSAGES/library/http.server.po
+source_file = locale/pot/library/http.server.pot
+source_lang = en
+
+[python-35.library--webbrowser]
+file_filter = locale/<lang>/LC_MESSAGES/library/webbrowser.po
+source_file = locale/pot/library/webbrowser.pot
+source_lang = en
+
+[python-35.library--_dummy_thread]
+file_filter = locale/<lang>/LC_MESSAGES/library/_dummy_thread.po
+source_file = locale/pot/library/_dummy_thread.pot
+source_lang = en
+
+[python-35.library--urllib_parse]
+file_filter = locale/<lang>/LC_MESSAGES/library/urllib.parse.po
+source_file = locale/pot/library/urllib.parse.pot
+source_lang = en
+
+[python-35.library--tkinter_tix]
+file_filter = locale/<lang>/LC_MESSAGES/library/tkinter.tix.po
+source_file = locale/pot/library/tkinter.tix.pot
+source_lang = en
+
+[python-35.library--numeric]
+file_filter = locale/<lang>/LC_MESSAGES/library/numeric.po
+source_file = locale/pot/library/numeric.pot
+source_lang = en
+
+[python-35.library--subprocess]
+file_filter = locale/<lang>/LC_MESSAGES/library/subprocess.po
+source_file = locale/pot/library/subprocess.pot
+source_lang = en
+
+[python-35.library--fnmatch]
+file_filter = locale/<lang>/LC_MESSAGES/library/fnmatch.po
+source_file = locale/pot/library/fnmatch.pot
+source_lang = en
+
+[python-35.library--exceptions]
+file_filter = locale/<lang>/LC_MESSAGES/library/exceptions.po
+source_file = locale/pot/library/exceptions.pot
+source_lang = en
+
+[python-35.library--socketserver]
+file_filter = locale/<lang>/LC_MESSAGES/library/socketserver.po
+source_file = locale/pot/library/socketserver.pot
+source_lang = en
+
+[python-35.library--reprlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/reprlib.po
+source_file = locale/pot/library/reprlib.pot
+source_lang = en
+
+[python-35.library--xml_sax_reader]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.sax.reader.po
+source_file = locale/pot/library/xml.sax.reader.pot
+source_lang = en
+
+[python-35.library--zipfile]
+file_filter = locale/<lang>/LC_MESSAGES/library/zipfile.po
+source_file = locale/pot/library/zipfile.pot
+source_lang = en
+
+[python-35.library--builtins]
+file_filter = locale/<lang>/LC_MESSAGES/library/builtins.po
+source_file = locale/pot/library/builtins.pot
+source_lang = en
+
+[python-35.library--pipes]
+file_filter = locale/<lang>/LC_MESSAGES/library/pipes.po
+source_file = locale/pot/library/pipes.pot
+source_lang = en
+
+[python-35.library--datetime]
+file_filter = locale/<lang>/LC_MESSAGES/library/datetime.po
+source_file = locale/pot/library/datetime.pot
+source_lang = en
+
+[python-35.library--tty]
+file_filter = locale/<lang>/LC_MESSAGES/library/tty.po
+source_file = locale/pot/library/tty.pot
+source_lang = en
+
+[python-35.library--gzip]
+file_filter = locale/<lang>/LC_MESSAGES/library/gzip.po
+source_file = locale/pot/library/gzip.pot
+source_lang = en
+
+[python-35.library--imghdr]
+file_filter = locale/<lang>/LC_MESSAGES/library/imghdr.po
+source_file = locale/pot/library/imghdr.pot
+source_lang = en
+
+[python-35.library--functions]
+file_filter = locale/<lang>/LC_MESSAGES/library/functions.po
+source_file = locale/pot/library/functions.pot
+source_lang = en
+
+[python-35.library--mmap]
+file_filter = locale/<lang>/LC_MESSAGES/library/mmap.po
+source_file = locale/pot/library/mmap.pot
+source_lang = en
+
+[python-35.library--urllib]
+file_filter = locale/<lang>/LC_MESSAGES/library/urllib.po
+source_file = locale/pot/library/urllib.pot
+source_lang = en
+
+[python-35.library--trace]
+file_filter = locale/<lang>/LC_MESSAGES/library/trace.po
+source_file = locale/pot/library/trace.pot
+source_lang = en
+
+[python-35.library--tabnanny]
+file_filter = locale/<lang>/LC_MESSAGES/library/tabnanny.po
+source_file = locale/pot/library/tabnanny.pot
+source_lang = en
+
+[python-35.library--email_mime]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.mime.po
+source_file = locale/pot/library/email.mime.pot
+source_lang = en
+
+[python-35.library--curses_panel]
+file_filter = locale/<lang>/LC_MESSAGES/library/curses.panel.po
+source_file = locale/pot/library/curses.panel.pot
+source_lang = en
+
+[python-35.library--email_encoders]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.encoders.po
+source_file = locale/pot/library/email.encoders.pot
+source_lang = en
+
+[python-35.library--binary]
+file_filter = locale/<lang>/LC_MESSAGES/library/binary.po
+source_file = locale/pot/library/binary.pot
+source_lang = en
+
+[python-35.library--tracemalloc]
+file_filter = locale/<lang>/LC_MESSAGES/library/tracemalloc.po
+source_file = locale/pot/library/tracemalloc.pot
+source_lang = en
+
+[python-35.library--wave]
+file_filter = locale/<lang>/LC_MESSAGES/library/wave.po
+source_file = locale/pot/library/wave.pot
+source_lang = en
+
+[python-35.library--xmlrpc_client]
+file_filter = locale/<lang>/LC_MESSAGES/library/xmlrpc.client.po
+source_file = locale/pot/library/xmlrpc.client.pot
+source_lang = en
+
+[python-35.library--sunau]
+file_filter = locale/<lang>/LC_MESSAGES/library/sunau.po
+source_file = locale/pot/library/sunau.pot
+source_lang = en
+
+[python-35.library--cmath]
+file_filter = locale/<lang>/LC_MESSAGES/library/cmath.po
+source_file = locale/pot/library/cmath.pot
+source_lang = en
+
+[python-35.library--zlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/zlib.po
+source_file = locale/pot/library/zlib.pot
+source_lang = en
+
+[python-35.library--time]
+file_filter = locale/<lang>/LC_MESSAGES/library/time.po
+source_file = locale/pot/library/time.pot
+source_lang = en
+
+[python-35.library--atexit]
+file_filter = locale/<lang>/LC_MESSAGES/library/atexit.po
+source_file = locale/pot/library/atexit.pot
+source_lang = en
+
+[python-35.library--zipimport]
+file_filter = locale/<lang>/LC_MESSAGES/library/zipimport.po
+source_file = locale/pot/library/zipimport.pot
+source_lang = en
+
+[python-35.library--tkinter]
+file_filter = locale/<lang>/LC_MESSAGES/library/tkinter.po
+source_file = locale/pot/library/tkinter.pot
+source_lang = en
+
+[python-35.library--email_util]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.util.po
+source_file = locale/pot/library/email.util.pot
+source_lang = en
+
+[python-35.library--shelve]
+file_filter = locale/<lang>/LC_MESSAGES/library/shelve.po
+source_file = locale/pot/library/shelve.pot
+source_lang = en
+
+[python-35.library--nis]
+file_filter = locale/<lang>/LC_MESSAGES/library/nis.po
+source_file = locale/pot/library/nis.pot
+source_lang = en
+
+[python-35.library--os_path]
+file_filter = locale/<lang>/LC_MESSAGES/library/os.path.po
+source_file = locale/pot/library/os.path.pot
+source_lang = en
+
+[python-35.library--socket]
+file_filter = locale/<lang>/LC_MESSAGES/library/socket.po
+source_file = locale/pot/library/socket.pot
+source_lang = en
+
+[python-35.library--othergui]
+file_filter = locale/<lang>/LC_MESSAGES/library/othergui.po
+source_file = locale/pot/library/othergui.pot
+source_lang = en
+
+[python-35.library--plistlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/plistlib.po
+source_file = locale/pot/library/plistlib.pot
+source_lang = en
+
+[python-35.library--platform]
+file_filter = locale/<lang>/LC_MESSAGES/library/platform.po
+source_file = locale/pot/library/platform.pot
+source_lang = en
+
+[python-35.library--imaplib]
+file_filter = locale/<lang>/LC_MESSAGES/library/imaplib.po
+source_file = locale/pot/library/imaplib.pot
+source_lang = en
+
+[python-35.library--asyncore]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncore.po
+source_file = locale/pot/library/asyncore.pot
+source_lang = en
+
+[python-35.library--xml_dom_minidom]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.dom.minidom.po
+source_file = locale/pot/library/xml.dom.minidom.pot
+source_lang = en
+
+[python-35.library--crypto]
+file_filter = locale/<lang>/LC_MESSAGES/library/crypto.po
+source_file = locale/pot/library/crypto.pot
+source_lang = en
+
+[python-35.library--fileinput]
+file_filter = locale/<lang>/LC_MESSAGES/library/fileinput.po
+source_file = locale/pot/library/fileinput.pot
+source_lang = en
+
+[python-35.library--email_headerregistry]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.headerregistry.po
+source_file = locale/pot/library/email.headerregistry.pot
+source_lang = en
+
+[python-35.library--termios]
+file_filter = locale/<lang>/LC_MESSAGES/library/termios.po
+source_file = locale/pot/library/termios.pot
+source_lang = en
+
+[python-35.library--superseded]
+file_filter = locale/<lang>/LC_MESSAGES/library/superseded.po
+source_file = locale/pot/library/superseded.pot
+source_lang = en
+
+[python-35.library--unicodedata]
+file_filter = locale/<lang>/LC_MESSAGES/library/unicodedata.po
+source_file = locale/pot/library/unicodedata.pot
+source_lang = en
+
+[python-35.library--pdb]
+file_filter = locale/<lang>/LC_MESSAGES/library/pdb.po
+source_file = locale/pot/library/pdb.pot
+source_lang = en
+
+[python-35.library--code]
+file_filter = locale/<lang>/LC_MESSAGES/library/code.po
+source_file = locale/pot/library/code.pot
+source_lang = en
+
+[python-35.library--bdb]
+file_filter = locale/<lang>/LC_MESSAGES/library/bdb.po
+source_file = locale/pot/library/bdb.pot
+source_lang = en
+
+[python-35.library--collections_abc]
+file_filter = locale/<lang>/LC_MESSAGES/library/collections.abc.po
+source_file = locale/pot/library/collections.abc.pot
+source_lang = en
+
+[python-35.library--threading]
+file_filter = locale/<lang>/LC_MESSAGES/library/threading.po
+source_file = locale/pot/library/threading.pot
+source_lang = en
+
+[python-35.library--email]
+file_filter = locale/<lang>/LC_MESSAGES/library/email.po
+source_file = locale/pot/library/email.pot
+source_lang = en
+
+[python-35.library--persistence]
+file_filter = locale/<lang>/LC_MESSAGES/library/persistence.po
+source_file = locale/pot/library/persistence.pot
+source_lang = en
+
+[python-35.library--ssl]
+file_filter = locale/<lang>/LC_MESSAGES/library/ssl.po
+source_file = locale/pot/library/ssl.pot
+source_lang = en
+
+[python-35.library--resource]
+file_filter = locale/<lang>/LC_MESSAGES/library/resource.po
+source_file = locale/pot/library/resource.pot
+source_lang = en
+
+[python-35.library--idle]
+file_filter = locale/<lang>/LC_MESSAGES/library/idle.po
+source_file = locale/pot/library/idle.pot
+source_lang = en
+
+[python-35.library--symbol]
+file_filter = locale/<lang>/LC_MESSAGES/library/symbol.po
+source_file = locale/pot/library/symbol.pot
+source_lang = en
+
+[python-35.library--smtpd]
+file_filter = locale/<lang>/LC_MESSAGES/library/smtpd.po
+source_file = locale/pot/library/smtpd.pot
+source_lang = en
+
+[python-35.library--importlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/importlib.po
+source_file = locale/pot/library/importlib.pot
+source_lang = en
+
+[python-35.library--pickletools]
+file_filter = locale/<lang>/LC_MESSAGES/library/pickletools.po
+source_file = locale/pot/library/pickletools.pot
+source_lang = en
+
+[python-35.library--sched]
+file_filter = locale/<lang>/LC_MESSAGES/library/sched.po
+source_file = locale/pot/library/sched.pot
+source_lang = en
+
+[python-35.library--pickle]
+file_filter = locale/<lang>/LC_MESSAGES/library/pickle.po
+source_file = locale/pot/library/pickle.pot
+source_lang = en
+
+[python-35.library--gettext]
+file_filter = locale/<lang>/LC_MESSAGES/library/gettext.po
+source_file = locale/pot/library/gettext.pot
+source_lang = en
+
+[python-35.library--multiprocessing]
+file_filter = locale/<lang>/LC_MESSAGES/library/multiprocessing.po
+source_file = locale/pot/library/multiprocessing.pot
+source_lang = en
+
+[python-35.library--timeit]
+file_filter = locale/<lang>/LC_MESSAGES/library/timeit.po
+source_file = locale/pot/library/timeit.pot
+source_lang = en
+
+[python-35.library--nntplib]
+file_filter = locale/<lang>/LC_MESSAGES/library/nntplib.po
+source_file = locale/pot/library/nntplib.pot
+source_lang = en
+
+[python-35.library--ctypes]
+file_filter = locale/<lang>/LC_MESSAGES/library/ctypes.po
+source_file = locale/pot/library/ctypes.pot
+source_lang = en
+
+[python-35.library--parser]
+file_filter = locale/<lang>/LC_MESSAGES/library/parser.po
+source_file = locale/pot/library/parser.pot
+source_lang = en
+
+[python-35.library--unix]
+file_filter = locale/<lang>/LC_MESSAGES/library/unix.po
+source_file = locale/pot/library/unix.pot
+source_lang = en
+
+[python-35.library--i18n]
+file_filter = locale/<lang>/LC_MESSAGES/library/i18n.po
+source_file = locale/pot/library/i18n.pot
+source_lang = en
+
+[python-35.library--select]
+file_filter = locale/<lang>/LC_MESSAGES/library/select.po
+source_file = locale/pot/library/select.pot
+source_lang = en
+
+[python-35.library--py_compile]
+file_filter = locale/<lang>/LC_MESSAGES/library/py_compile.po
+source_file = locale/pot/library/py_compile.pot
+source_lang = en
+
+[python-35.library--cgitb]
+file_filter = locale/<lang>/LC_MESSAGES/library/cgitb.po
+source_file = locale/pot/library/cgitb.pot
+source_lang = en
+
+[python-35.library--http_cookiejar]
+file_filter = locale/<lang>/LC_MESSAGES/library/http.cookiejar.po
+source_file = locale/pot/library/http.cookiejar.pot
+source_lang = en
+
+[python-35.library--curses_ascii]
+file_filter = locale/<lang>/LC_MESSAGES/library/curses.ascii.po
+source_file = locale/pot/library/curses.ascii.pot
+source_lang = en
+
+[python-35.library--ftplib]
+file_filter = locale/<lang>/LC_MESSAGES/library/ftplib.po
+source_file = locale/pot/library/ftplib.pot
+source_lang = en
+
+[python-35.library--index]
+file_filter = locale/<lang>/LC_MESSAGES/library/index.po
+source_file = locale/pot/library/index.pot
+source_lang = en
+
+[python-35.library--fpectl]
+file_filter = locale/<lang>/LC_MESSAGES/library/fpectl.po
+source_file = locale/pot/library/fpectl.pot
+source_lang = en
+
+[python-35.library--heapq]
+file_filter = locale/<lang>/LC_MESSAGES/library/heapq.po
+source_file = locale/pot/library/heapq.pot
+source_lang = en
+
+[python-35.library--abc]
+file_filter = locale/<lang>/LC_MESSAGES/library/abc.po
+source_file = locale/pot/library/abc.pot
+source_lang = en
+
+[python-35.library--asyncio-queue]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-queue.po
+source_file = locale/pot/library/asyncio-queue.pot
+source_lang = en
+
+[python-35.library--asyncio-subprocess]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-subprocess.po
+source_file = locale/pot/library/asyncio-subprocess.pot
+source_lang = en
+
+[python-35.library--__main__]
+file_filter = locale/<lang>/LC_MESSAGES/library/__main__.po
+source_file = locale/pot/library/__main__.pot
+source_lang = en
+
+[python-35.library--types]
+file_filter = locale/<lang>/LC_MESSAGES/library/types.po
+source_file = locale/pot/library/types.pot
+source_lang = en
+
+[python-35.library--http_cookies]
+file_filter = locale/<lang>/LC_MESSAGES/library/http.cookies.po
+source_file = locale/pot/library/http.cookies.pot
+source_lang = en
+
+[python-35.library--operator]
+file_filter = locale/<lang>/LC_MESSAGES/library/operator.po
+source_file = locale/pot/library/operator.pot
+source_lang = en
+
+[python-35.library--http]
+file_filter = locale/<lang>/LC_MESSAGES/library/http.po
+source_file = locale/pot/library/http.pot
+source_lang = en
+
+[python-35.library--tkinter_ttk]
+file_filter = locale/<lang>/LC_MESSAGES/library/tkinter.ttk.po
+source_file = locale/pot/library/tkinter.ttk.pot
+source_lang = en
+
+[python-35.library--misc]
+file_filter = locale/<lang>/LC_MESSAGES/library/misc.po
+source_file = locale/pot/library/misc.pot
+source_lang = en
+
+[python-35.library--email-examples]
+file_filter = locale/<lang>/LC_MESSAGES/library/email-examples.po
+source_file = locale/pot/library/email-examples.pot
+source_lang = en
+
+[python-35.library--statistics]
+file_filter = locale/<lang>/LC_MESSAGES/library/statistics.po
+source_file = locale/pot/library/statistics.pot
+source_lang = en
+
+[python-35.library--stdtypes]
+file_filter = locale/<lang>/LC_MESSAGES/library/stdtypes.po
+source_file = locale/pot/library/stdtypes.pot
+source_lang = en
+
+[python-35.library--poplib]
+file_filter = locale/<lang>/LC_MESSAGES/library/poplib.po
+source_file = locale/pot/library/poplib.pot
+source_lang = en
+
+[python-35.library--traceback]
+file_filter = locale/<lang>/LC_MESSAGES/library/traceback.po
+source_file = locale/pot/library/traceback.pot
+source_lang = en
+
+[python-35.library--asyncio-dev]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-dev.po
+source_file = locale/pot/library/asyncio-dev.pot
+source_lang = en
+
+[python-35.library--aifc]
+file_filter = locale/<lang>/LC_MESSAGES/library/aifc.po
+source_file = locale/pot/library/aifc.pot
+source_lang = en
+
+[python-35.library--mailbox]
+file_filter = locale/<lang>/LC_MESSAGES/library/mailbox.po
+source_file = locale/pot/library/mailbox.pot
+source_lang = en
+
+[python-35.library--constants]
+file_filter = locale/<lang>/LC_MESSAGES/library/constants.po
+source_file = locale/pot/library/constants.pot
+source_lang = en
+
+[python-35.library--calendar]
+file_filter = locale/<lang>/LC_MESSAGES/library/calendar.po
+source_file = locale/pot/library/calendar.pot
+source_lang = en
+
+[python-35.library--json]
+file_filter = locale/<lang>/LC_MESSAGES/library/json.po
+source_file = locale/pot/library/json.pot
+source_lang = en
+
+[python-35.library--readline]
+file_filter = locale/<lang>/LC_MESSAGES/library/readline.po
+source_file = locale/pot/library/readline.pot
+source_lang = en
+
+[python-35.library--windows]
+file_filter = locale/<lang>/LC_MESSAGES/library/windows.po
+source_file = locale/pot/library/windows.pot
+source_lang = en
+
+[python-35.library--asyncio]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio.po
+source_file = locale/pot/library/asyncio.pot
+source_lang = en
+
+[python-35.library--base64]
+file_filter = locale/<lang>/LC_MESSAGES/library/base64.po
+source_file = locale/pot/library/base64.pot
+source_lang = en
+
+[python-35.library--modules]
+file_filter = locale/<lang>/LC_MESSAGES/library/modules.po
+source_file = locale/pot/library/modules.pot
+source_lang = en
+
+[python-35.library--xml]
+file_filter = locale/<lang>/LC_MESSAGES/library/xml.po
+source_file = locale/pot/library/xml.pot
+source_lang = en
+
+[python-35.library--asyncio-eventloops]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-eventloops.po
+source_file = locale/pot/library/asyncio-eventloops.pot
+source_lang = en
+
+[python-35.library--quopri]
+file_filter = locale/<lang>/LC_MESSAGES/library/quopri.po
+source_file = locale/pot/library/quopri.pot
+source_lang = en
+
+[python-35.library--typing]
+file_filter = locale/<lang>/LC_MESSAGES/library/typing.po
+source_file = locale/pot/library/typing.pot
+source_lang = en
+
+[python-35.library--re]
+file_filter = locale/<lang>/LC_MESSAGES/library/re.po
+source_file = locale/pot/library/re.pot
+source_lang = en
+
+[python-35.library--urllib_robotparser]
+file_filter = locale/<lang>/LC_MESSAGES/library/urllib.robotparser.po
+source_file = locale/pot/library/urllib.robotparser.pot
+source_lang = en
+
+[python-35.library--asyncio-protocol]
+file_filter = locale/<lang>/LC_MESSAGES/library/asyncio-protocol.po
+source_file = locale/pot/library/asyncio-protocol.pot
+source_lang = en
+
+[python-35.library--numbers]
+file_filter = locale/<lang>/LC_MESSAGES/library/numbers.po
+source_file = locale/pot/library/numbers.pot
+source_lang = en
+
+[python-35.library--filecmp]
+file_filter = locale/<lang>/LC_MESSAGES/library/filecmp.po
+source_file = locale/pot/library/filecmp.pot
+source_lang = en
+
+[python-35.library--internet]
+file_filter = locale/<lang>/LC_MESSAGES/library/internet.po
+source_file = locale/pot/library/internet.pot
+source_lang = en
+
+[python-35.library--csv]
+file_filter = locale/<lang>/LC_MESSAGES/library/csv.po
+source_file = locale/pot/library/csv.pot
+source_lang = en
+
+[python-35.library--lzma]
+file_filter = locale/<lang>/LC_MESSAGES/library/lzma.po
+source_file = locale/pot/library/lzma.pot
+source_lang = en
+
+[python-35.library--filesys]
+file_filter = locale/<lang>/LC_MESSAGES/library/filesys.po
+source_file = locale/pot/library/filesys.pot
+source_lang = en
+
+[python-35.library--locale]
+file_filter = locale/<lang>/LC_MESSAGES/library/locale.po
+source_file = locale/pot/library/locale.pot
+source_lang = en
+
+[python-35.library--sndhdr]
+file_filter = locale/<lang>/LC_MESSAGES/library/sndhdr.po
+source_file = locale/pot/library/sndhdr.pot
+source_lang = en
+
+[python-35.library--pprint]
+file_filter = locale/<lang>/LC_MESSAGES/library/pprint.po
+source_file = locale/pot/library/pprint.pot
+source_lang = en
+
+[python-35.library--xdrlib]
+file_filter = locale/<lang>/LC_MESSAGES/library/xdrlib.po
+source_file = locale/pot/library/xdrlib.pot
+source_lang = en
+
+[python-35.library--netdata]
+file_filter = locale/<lang>/LC_MESSAGES/library/netdata.po
+source_file = locale/pot/library/netdata.pot
+source_lang = en
+
+[python-35.reference--datamodel]
+file_filter = locale/<lang>/LC_MESSAGES/reference/datamodel.po
+source_file = locale/pot/reference/datamodel.pot
+source_lang = en
+
+[python-35.reference--introduction]
+file_filter = locale/<lang>/LC_MESSAGES/reference/introduction.po
+source_file = locale/pot/reference/introduction.pot
+source_lang = en
+
+[python-35.reference--expressions]
+file_filter = locale/<lang>/LC_MESSAGES/reference/expressions.po
+source_file = locale/pot/reference/expressions.pot
+source_lang = en
+
+[python-35.reference--lexical_analysis]
+file_filter = locale/<lang>/LC_MESSAGES/reference/lexical_analysis.po
+source_file = locale/pot/reference/lexical_analysis.pot
+source_lang = en
+
+[python-35.reference--compound_stmts]
+file_filter = locale/<lang>/LC_MESSAGES/reference/compound_stmts.po
+source_file = locale/pot/reference/compound_stmts.pot
+source_lang = en
+
+[python-35.reference--executionmodel]
+file_filter = locale/<lang>/LC_MESSAGES/reference/executionmodel.po
+source_file = locale/pot/reference/executionmodel.pot
+source_lang = en
+
+[python-35.reference--grammar]
+file_filter = locale/<lang>/LC_MESSAGES/reference/grammar.po
+source_file = locale/pot/reference/grammar.pot
+source_lang = en
+
+[python-35.reference--import]
+file_filter = locale/<lang>/LC_MESSAGES/reference/import.po
+source_file = locale/pot/reference/import.pot
+source_lang = en
+
+[python-35.reference--index]
+file_filter = locale/<lang>/LC_MESSAGES/reference/index.po
+source_file = locale/pot/reference/index.pot
+source_lang = en
+
+[python-35.reference--toplevel_components]
+file_filter = locale/<lang>/LC_MESSAGES/reference/toplevel_components.po
+source_file = locale/pot/reference/toplevel_components.pot
+source_lang = en
+
+[python-35.reference--simple_stmts]
+file_filter = locale/<lang>/LC_MESSAGES/reference/simple_stmts.po
+source_file = locale/pot/reference/simple_stmts.pot
+source_lang = en
+
+[python-35.tutorial--stdlib]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/stdlib.po
+source_file = locale/pot/tutorial/stdlib.pot
+source_lang = en
+
+[python-35.tutorial--whatnow]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/whatnow.po
+source_file = locale/pot/tutorial/whatnow.pot
+source_lang = en
+
+[python-35.tutorial--stdlib2]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/stdlib2.po
+source_file = locale/pot/tutorial/stdlib2.pot
+source_lang = en
+
+[python-35.tutorial--venv]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/venv.po
+source_file = locale/pot/tutorial/venv.pot
+source_lang = en
+
+[python-35.tutorial--introduction]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/introduction.po
+source_file = locale/pot/tutorial/introduction.pot
+source_lang = en
+
+[python-35.tutorial--appendix]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/appendix.po
+source_file = locale/pot/tutorial/appendix.pot
+source_lang = en
+
+[python-35.tutorial--inputoutput]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/inputoutput.po
+source_file = locale/pot/tutorial/inputoutput.pot
+source_lang = en
+
+[python-35.tutorial--datastructures]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/datastructures.po
+source_file = locale/pot/tutorial/datastructures.pot
+source_lang = en
+
+[python-35.tutorial--controlflow]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/controlflow.po
+source_file = locale/pot/tutorial/controlflow.pot
+source_lang = en
+
+[python-35.tutorial--classes]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/classes.po
+source_file = locale/pot/tutorial/classes.pot
+source_lang = en
+
+[python-35.tutorial--interactive]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/interactive.po
+source_file = locale/pot/tutorial/interactive.pot
+source_lang = en
+
+[python-35.tutorial--index]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/index.po
+source_file = locale/pot/tutorial/index.pot
+source_lang = en
+
+[python-35.tutorial--interpreter]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/interpreter.po
+source_file = locale/pot/tutorial/interpreter.pot
+source_lang = en
+
+[python-35.tutorial--appetite]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/appetite.po
+source_file = locale/pot/tutorial/appetite.pot
+source_lang = en
+
+[python-35.tutorial--errors]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/errors.po
+source_file = locale/pot/tutorial/errors.pot
+source_lang = en
+
+[python-35.tutorial--modules]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/modules.po
+source_file = locale/pot/tutorial/modules.pot
+source_lang = en
+
+[python-35.tutorial--floatingpoint]
+file_filter = locale/<lang>/LC_MESSAGES/tutorial/floatingpoint.po
+source_file = locale/pot/tutorial/floatingpoint.pot
+source_lang = en
+
+[python-35.install--index]
+file_filter = locale/<lang>/LC_MESSAGES/install/index.po
+source_file = locale/pot/install/index.pot
+source_lang = en
+
+[python-35.distributing--index]
+file_filter = locale/<lang>/LC_MESSAGES/distributing/index.po
+source_file = locale/pot/distributing/index.pot
+source_lang = en
+
+[python-35.distutils--examples]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/examples.po
+source_file = locale/pot/distutils/examples.pot
+source_lang = en
+
+[python-35.distutils--commandref]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/commandref.po
+source_file = locale/pot/distutils/commandref.pot
+source_lang = en
+
+[python-35.distutils--apiref]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/apiref.po
+source_file = locale/pot/distutils/apiref.pot
+source_lang = en
+
+[python-35.distutils--configfile]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/configfile.po
+source_file = locale/pot/distutils/configfile.pot
+source_lang = en
+
+[python-35.distutils--introduction]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/introduction.po
+source_file = locale/pot/distutils/introduction.pot
+source_lang = en
+
+[python-35.distutils--builtdist]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/builtdist.po
+source_file = locale/pot/distutils/builtdist.pot
+source_lang = en
+
+[python-35.distutils--packageindex]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/packageindex.po
+source_file = locale/pot/distutils/packageindex.pot
+source_lang = en
+
+[python-35.distutils--setupscript]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/setupscript.po
+source_file = locale/pot/distutils/setupscript.pot
+source_lang = en
+
+[python-35.distutils--sourcedist]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/sourcedist.po
+source_file = locale/pot/distutils/sourcedist.pot
+source_lang = en
+
+[python-35.distutils--extending]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/extending.po
+source_file = locale/pot/distutils/extending.pot
+source_lang = en
+
+[python-35.distutils--index]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/index.po
+source_file = locale/pot/distutils/index.pot
+source_lang = en
+
+[python-35.distutils--uploading]
+file_filter = locale/<lang>/LC_MESSAGES/distutils/uploading.po
+source_file = locale/pot/distutils/uploading.pot
+source_lang = en
+
+[python-35.using--scripts]
+file_filter = locale/<lang>/LC_MESSAGES/using/scripts.po
+source_file = locale/pot/using/scripts.pot
+source_lang = en
+
+[python-35.using--cmdline]
+file_filter = locale/<lang>/LC_MESSAGES/using/cmdline.po
+source_file = locale/pot/using/cmdline.pot
+source_lang = en
+
+[python-35.using--mac]
+file_filter = locale/<lang>/LC_MESSAGES/using/mac.po
+source_file = locale/pot/using/mac.pot
+source_lang = en
+
+[python-35.using--unix]
+file_filter = locale/<lang>/LC_MESSAGES/using/unix.po
+source_file = locale/pot/using/unix.pot
+source_lang = en
+
+[python-35.using--index]
+file_filter = locale/<lang>/LC_MESSAGES/using/index.po
+source_file = locale/pot/using/index.pot
+source_lang = en
+
+[python-35.using--windows]
+file_filter = locale/<lang>/LC_MESSAGES/using/windows.po
+source_file = locale/pot/using/windows.pot
+source_lang = en
+
+[python-35.installing--index]
+file_filter = locale/<lang>/LC_MESSAGES/installing/index.po
+source_file = locale/pot/installing/index.pot
+source_lang = en
+
+[python-35.whatsnew--3_4]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.4.po
+source_file = locale/pot/whatsnew/3.4.pot
+source_lang = en
+
+[python-35.whatsnew--3_2]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.2.po
+source_file = locale/pot/whatsnew/3.2.pot
+source_lang = en
+
+[python-35.whatsnew--changelog]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/changelog.po
+source_file = locale/pot/whatsnew/changelog.pot
+source_lang = en
+
+[python-35.whatsnew--3_0]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.0.po
+source_file = locale/pot/whatsnew/3.0.pot
+source_lang = en
+
+[python-35.whatsnew--3_5]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.5.po
+source_file = locale/pot/whatsnew/3.5.pot
+source_lang = en
+
+[python-35.whatsnew--3_1]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.1.po
+source_file = locale/pot/whatsnew/3.1.pot
+source_lang = en
+
+[python-35.whatsnew--2_7]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.7.po
+source_file = locale/pot/whatsnew/2.7.pot
+source_lang = en
+
+[python-35.whatsnew--2_1]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.1.po
+source_file = locale/pot/whatsnew/2.1.pot
+source_lang = en
+
+[python-35.whatsnew--2_6]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.6.po
+source_file = locale/pot/whatsnew/2.6.pot
+source_lang = en
+
+[python-35.whatsnew--2_4]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.4.po
+source_file = locale/pot/whatsnew/2.4.pot
+source_lang = en
+
+[python-35.whatsnew--2_5]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.5.po
+source_file = locale/pot/whatsnew/2.5.pot
+source_lang = en
+
+[python-35.whatsnew--2_2]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.2.po
+source_file = locale/pot/whatsnew/2.2.pot
+source_lang = en
+
+[python-35.whatsnew--2_0]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.0.po
+source_file = locale/pot/whatsnew/2.0.pot
+source_lang = en
+
+[python-35.whatsnew--2_3]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/2.3.po
+source_file = locale/pot/whatsnew/2.3.pot
+source_lang = en
+
+[python-35.whatsnew--index]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/index.po
+source_file = locale/pot/whatsnew/index.pot
+source_lang = en
+
+[python-35.whatsnew--3_3]
+file_filter = locale/<lang>/LC_MESSAGES/whatsnew/3.3.po
+source_file = locale/pot/whatsnew/3.3.pot
+source_lang = en
+
+[python-35.howto--webservers]
+file_filter = locale/<lang>/LC_MESSAGES/howto/webservers.po
+source_file = locale/pot/howto/webservers.pot
+source_lang = en
+
+[python-35.howto--functional]
+file_filter = locale/<lang>/LC_MESSAGES/howto/functional.po
+source_file = locale/pot/howto/functional.pot
+source_lang = en
+
+[python-35.howto--sorting]
+file_filter = locale/<lang>/LC_MESSAGES/howto/sorting.po
+source_file = locale/pot/howto/sorting.pot
+source_lang = en
+
+[python-35.howto--urllib2]
+file_filter = locale/<lang>/LC_MESSAGES/howto/urllib2.po
+source_file = locale/pot/howto/urllib2.pot
+source_lang = en
+
+[python-35.howto--argparse]
+file_filter = locale/<lang>/LC_MESSAGES/howto/argparse.po
+source_file = locale/pot/howto/argparse.pot
+source_lang = en
+
+[python-35.howto--logging]
+file_filter = locale/<lang>/LC_MESSAGES/howto/logging.po
+source_file = locale/pot/howto/logging.pot
+source_lang = en
+
+[python-35.howto--curses]
+file_filter = locale/<lang>/LC_MESSAGES/howto/curses.po
+source_file = locale/pot/howto/curses.pot
+source_lang = en
+
+[python-35.howto--cporting]
+file_filter = locale/<lang>/LC_MESSAGES/howto/cporting.po
+source_file = locale/pot/howto/cporting.pot
+source_lang = en
+
+[python-35.howto--clinic]
+file_filter = locale/<lang>/LC_MESSAGES/howto/clinic.po
+source_file = locale/pot/howto/clinic.pot
+source_lang = en
+
+[python-35.howto--sockets]
+file_filter = locale/<lang>/LC_MESSAGES/howto/sockets.po
+source_file = locale/pot/howto/sockets.pot
+source_lang = en
+
+[python-35.howto--ipaddress]
+file_filter = locale/<lang>/LC_MESSAGES/howto/ipaddress.po
+source_file = locale/pot/howto/ipaddress.pot
+source_lang = en
+
+[python-35.howto--unicode]
+file_filter = locale/<lang>/LC_MESSAGES/howto/unicode.po
+source_file = locale/pot/howto/unicode.pot
+source_lang = en
+
+[python-35.howto--regex]
+file_filter = locale/<lang>/LC_MESSAGES/howto/regex.po
+source_file = locale/pot/howto/regex.pot
+source_lang = en
+
+[python-35.howto--pyporting]
+file_filter = locale/<lang>/LC_MESSAGES/howto/pyporting.po
+source_file = locale/pot/howto/pyporting.pot
+source_lang = en
+
+[python-35.howto--index]
+file_filter = locale/<lang>/LC_MESSAGES/howto/index.po
+source_file = locale/pot/howto/index.pot
+source_lang = en
+
+[python-35.howto--logging-cookbook]
+file_filter = locale/<lang>/LC_MESSAGES/howto/logging-cookbook.po
+source_file = locale/pot/howto/logging-cookbook.pot
+source_lang = en
+
+[python-35.howto--descriptor]
+file_filter = locale/<lang>/LC_MESSAGES/howto/descriptor.po
+source_file = locale/pot/howto/descriptor.pot
+source_lang = en
+
+[python-35.faq--installed]
+file_filter = locale/<lang>/LC_MESSAGES/faq/installed.po
+source_file = locale/pot/faq/installed.pot
+source_lang = en
+
+[python-35.faq--general]
+file_filter = locale/<lang>/LC_MESSAGES/faq/general.po
+source_file = locale/pot/faq/general.pot
+source_lang = en
+
+[python-35.faq--design]
+file_filter = locale/<lang>/LC_MESSAGES/faq/design.po
+source_file = locale/pot/faq/design.pot
+source_lang = en
+
+[python-35.faq--library]
+file_filter = locale/<lang>/LC_MESSAGES/faq/library.po
+source_file = locale/pot/faq/library.pot
+source_lang = en
+
+[python-35.faq--extending]
+file_filter = locale/<lang>/LC_MESSAGES/faq/extending.po
+source_file = locale/pot/faq/extending.pot
+source_lang = en
+
+[python-35.faq--index]
+file_filter = locale/<lang>/LC_MESSAGES/faq/index.po
+source_file = locale/pot/faq/index.pot
+source_lang = en
+
+[python-35.faq--gui]
+file_filter = locale/<lang>/LC_MESSAGES/faq/gui.po
+source_file = locale/pot/faq/gui.pot
+source_lang = en
+
+[python-35.faq--programming]
+file_filter = locale/<lang>/LC_MESSAGES/faq/programming.po
+source_file = locale/pot/faq/programming.pot
+source_lang = en
+
+[python-35.faq--windows]
+file_filter = locale/<lang>/LC_MESSAGES/faq/windows.po
+source_file = locale/pot/faq/windows.pot
+source_lang = en
+

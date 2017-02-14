@@ -184,3 +184,9 @@ autobuild-stable-html:
 		exit 1;; \
 	esac
 	@make autobuild-dev-html
+
+# i18n commands
+.PHONY: gettext
+gettext:
+	sphinx-build -E -b gettext -D gettext_compact=0  -w warnings.txt -d build/.doctrees . locale/pot
+	find locale/pot -name '*.pot' | xargs sed -i -e '/^"POT-Creation-Date: 20/d'
