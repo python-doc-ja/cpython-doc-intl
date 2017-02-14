@@ -80,6 +80,10 @@ img {
     border: 0;
 }
 
+#searchbox input[type="text"] {
+    width: 100%;
+}
+
 /* -- search page ----------------------------------------------------------- */
 
 ul.search {

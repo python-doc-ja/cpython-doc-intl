@@ -2,7 +2,7 @@
 {% block rootrellink %}
         <li><img src="{{ pathto('_static/py.png', 1) }}" alt=""
                  style="vertical-align: middle; margin-top: -1px"/></li>
-        <li><a href="https://www.python.org/">Python</a>{{ reldelim1 }}</li>
+        <li><a href="http://www.python.jp/">Python</a>{{ reldelim1 }}</li>
         <li>
           {%- if versionswitcher is defined %}
           <span class="version_switcher_placeholder">{{ release }}</span>
@@ -17,7 +17,9 @@
 {% block extrahead %}
     <link rel="shortcut icon" type="image/png" href="{{ pathto('_static/py.png', 1) }}" />
     <link rel="canonical" href="https://docs.python.org/2/{{pagename}}.html" />
-    {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>{% endif %}
+    {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>
+    <script type="text/javascript" src="{{ pathto('_static/_jp.js', 1) }}"></script>
+    {% endif %}
     {% if versionswitcher is defined and not embedded %}<script type="text/javascript" src="{{ pathto('_static/version_switch.js', 1) }}"></script>{% endif %}
 {{ super() }}
     {% if builder == 'qthelp' %}

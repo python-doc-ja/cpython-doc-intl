@@ -1,0 +1,7 @@
+docutils<0.9
+https://bitbucket.org/uchida/sphinx/get/py27ja-release.tar.gz
+#docutils==0.10
+#sphinx==1.2b1
+#https://bitbucket.org/birkenfeld/sphinx/get/default.tar.gz
+jinja2==2.6
+Pygments==1.6

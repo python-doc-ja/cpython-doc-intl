@@ -13,33 +13,52 @@ sys.path.append(os.path.abspath('tools/extensions'))
 # General configuration
 # ---------------------
 
-extensions = ['sphinx.ext.coverage', 'sphinx.ext.doctest',
-              'pyspecific', 'c_annotations']
+# JP: ../Include ディレクトリが存在しないので、coverage拡張を無効化
+# JP: jpsupport 拡張を利用
+
+extensions = ['sphinx.ext.doctest',
+              'sphinx.ext.todo',
+              'pyspecific', 'c_annotations',
+              'jpsupport']
 
 # General substitutions.
 project = 'Python'
-copyright = '1990-%s, Python Software Foundation' % time.strftime('%Y')
+copyright = u'1990-%s, Python Software Foundation (translated by Python ドキュメント日本語翻訳プロジェクト)' % time.strftime('%Y')
+
+# The default replacements for |version| and |release|.
+#
+# The short X.Y version.
+# version = '2.6'
+# The full version, including alpha/beta/rc tags.
+# release = '2.6a0'
 
 # We look for the Include/patchlevel.h file in the current Python source tree
 # and replace the values accordingly.
-import patchlevel
-version, release = patchlevel.get_version_info()
+
+# JP: ../Include が無いので patchlevel モジュールを使わない
+#import patchlevel
+#version, release = patchlevel.get_version_info()
+version, release = '2.7', '2.7.x'
+
+language = 'ja'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
 today = ''
 # Else, today_fmt is used as the format for a strftime call.
-today_fmt = '%B %d, %Y'
+today_fmt = u'%Y年 %m月 %d日'
 
 # List of files that shouldn't be included in the build.
 exclude_patterns = [
     'maclib/scrap.rst',
     'library/xmllib.rst',
     'library/xml.etree.rst',
+    'refs',
+    'tools',
 ]
 
 # Require Sphinx 1.2 for build.
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 
 
 # Options for HTML output
@@ -50,7 +69,8 @@ html_theme_options = {'collapsiblesidebar': True}
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-html_last_updated_fmt = '%b %d, %Y'
+# JP: 英語の日付フォーマットから変更
+html_last_updated_fmt = '%Y-%m-%d'
 
 # Path to find HTML templates.
 templates_path = ['tools/templates']
@@ -62,7 +82,7 @@ html_sidebars = {
 
 # Additional templates that should be rendered to pages.
 html_additional_pages = {
-    'download': 'download.html',
+    #'download': 'download.html',
     'index': 'indexcontent.html',
 }
 
@@ -194,3 +214,19 @@ linkcheck_ignore = [r'https://bugs.python.org/(issue)?\d+',
 
 # Relative filename of the reference count data file.
 refcount_file = 'data/refcounts.dat'
+
+# JP: ePub の設定は元の conf.py にはない
+# -- Options for Epub output ---------------------------------------------------
+
+# Bibliographic Dublin Core info.
+epub_title = u'Python ドキュメント 日本語訳'
+epub_author = u'Python ドキュメント 翻訳プロジェクト'
+epub_publisher = epub_author
+epub_copyright = u'2010, Pythonドキュメント翻訳プロジェクト'
+
+
+# gettext
+# ---------------
+gettext_compact = False
+locale_dirs = ["locale"]
+language = 'ja'

@@ -1,0 +1,121 @@
+Index: search.py
+===================================================================
+--- search.py	(リビジョン 71045)
++++ search.py	(作業コピー)
+@@ -14,8 +14,14 @@
+ 
+ from docutils.nodes import Text, NodeVisitor
+ 
+-from sphinx.util.stemmer import PorterStemmer
+ from sphinx.util import jsdump, rpartition
++try:
++    # PyStemmer is wrapper for stemmer in c
++    import Stemmer as PyStemmer
++    PYSTEMMER = True
++except ImportError:
++    from sphinx.util.stemmer import PorterStemmer
++    PYSTEMMER = False
+ 
+ 
+ word_re = re.compile(r'\w+(?u)')
+@@ -62,17 +68,31 @@
+ js_index = _JavaScriptIndex()
+ 
+ 
+-class Stemmer(PorterStemmer):
+-    """
+-    All those porter stemmer implementations look hideous.
+-    make at least the stem method nicer.
+-    """
++if PYSTEMMER:
++    class Stemmer(object):
+ 
+-    def stem(self, word):
+-        word = word.lower()
+-        return PorterStemmer.stem(self, word, 0, len(word) - 1)
++        def __init__(self):
++            self._stemmer = PyStemmer.Stemmer('english')
+ 
++        def stem(self, word):
++            return self._stemmer.stemWord(word.lower())
+ 
++        def stemWords(self, iter):
++            import itertools
++            return self._stemmer.stemWords(itertools.imap(lambda x: x.lower(), iter))
++else:
++    class Stemmer(PorterStemmer):
++        """
++        All those porter stemmer implementations look hideous.
++        make at least the stem method nicer.
++        """
++
++        def stem(self, word):
++            word = word.lower()
++            return PorterStemmer.stem(self, word, 0, len(word) - 1)
++
++
++
+ class WordCollector(NodeVisitor):
+     """
+     A special visitor that collects words for the `IndexBuilder`.
+@@ -196,11 +216,11 @@
+         visitor = WordCollector(doctree)
+         doctree.walk(visitor)
+ 
+-        def add_term(word, prefix='', stem=self._stemmer.stem):
++        def add_term(word, stem=self._stemmer.stem):
+             word = stem(word)
+             if len(word) < 3 or word in stopwords or word.isdigit():
+                 return
+-            self._mapping.setdefault(prefix + word, set()).add(filename)
++            self._mapping.setdefault(word, set()).add(filename)
+ 
+         for word in word_re.findall(title):
+             add_term(word)
+Index: builders/html.py
+===================================================================
+--- builders/html.py	(リビジョン 71045)
++++ builders/html.py	(作業コピー)
+@@ -23,7 +23,7 @@
+ 
+ from docutils import nodes
+ from docutils.io import DocTreeInput, StringOutput
+-from docutils.core import publish_parts
++from docutils.core import Publisher, publish_parts
+ from docutils.utils import new_document
+ from docutils.frontend import OptionParser
+ from docutils.readers.doctree import Reader as DoctreeReader
+@@ -181,14 +181,26 @@
+         """Utility: Render a lone doctree node."""
+         doc = new_document('<partial node>')
+         doc.append(node)
+-        return publish_parts(
+-            doc,
+-            source_class=DocTreeInput,
+-            reader=DoctreeReader(),
+-            writer=HTMLWriter(self),
+-            settings_overrides={'output_encoding': 'unicode'}
+-        )
+ 
++        # cache publisher object.
++        if 'publisher' not in self.__dict__:
++            self.publisher = Publisher(
++                    source_class = DocTreeInput,
++                    destination_class=StringOutput)
++            self.publisher.set_components('standalone',
++                    'restructuredtext', 'pseudoxml')
++
++        pub = self.publisher
++
++        pub.reader = DoctreeReader()
++        pub.writer = HTMLWriter(self)
++        pub.process_programmatic_settings(
++                None, {'output_encoding': 'unicode'}, None)
++        pub.set_source(doc, None)
++        pub.set_destination(None, None)
++        pub.publish()
++        return pub.writer.parts
++        
+     def prepare_writing(self, docnames):
+         from sphinx.search import IndexBuilder
+ 

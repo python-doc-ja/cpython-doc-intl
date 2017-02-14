@@ -15,7 +15,7 @@ ALLSPHINXOPTS = -b $(BUILDER) -d build/doctrees -D latex_paper_size=$(PAPER) \
 
 .PHONY: help build html htmlhelp latex text changes linkcheck \
 	suspicious coverage doctest pydoc-topics htmlview clean dist check serve \
-	autobuild-dev autobuild-stable
+	autobuild-dev autobuild-stable gettext
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -101,6 +101,10 @@ pydoc-topics: build
 htmlview: html
 	 $(PYTHON) -c "import webbrowser; webbrowser.open('build/html/index.html')"
 
+# gettext: BUILDER = gettext
+# gettext: build
+# 	@echo "Building finished.  pot files are in locale/pot/"
+
 clean:
 	-rm -rf build/*
 
@@ -179,3 +183,9 @@ autobuild-stable-html:
 		exit 1;; \
 	esac
 	@make autobuild-dev-html
+
+# i18n commands
+.PHONY: gettext
+gettext:
+	sphinx-build -E -b gettext -D gettext_compact=0  -w warnings.txt -d build/.doctrees . locale/pot
+	find locale/pot -name '*.pot' | xargs sed -i -e '/^"POT-Creation-Date: 20/d'

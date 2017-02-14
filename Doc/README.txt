@@ -10,6 +10,22 @@ both style and markup, is available in the "Documenting Python" chapter of the
 developers guide <https://docs.python.org/devguide/documenting.html>.
 
 
+日本語版ビルド
+===============
+
+virtualenv を使ってください。ライブラリをインストールします。
+
+.. code:: bash
+
+    $ pip install -r requirements.txt
+
+あとは下の without make と同じです。 html なら
+
+.. code:: bash
+
+    $ python tools/sphinx-build.py -bhtml . build/html
+
+
 Building the docs
 =================
 

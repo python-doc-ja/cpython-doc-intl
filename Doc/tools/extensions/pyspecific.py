@@ -82,16 +82,23 @@ class ImplementationDetail(Directive):
     optional_arguments = 1
     final_argument_whitespace = True
 
+    #label_text = 'CPython implementation detail:'
+    label_text = 'CPython 実装の詳細:'
+
     def run(self):
         pnode = nodes.compound(classes=['impl-detail'])
         content = self.content
-        add_text = nodes.strong('CPython implementation detail:',
-                                'CPython implementation detail:')
+        add_text = nodes.strong(self.label_text, self.label_text)
         if self.arguments:
             n, m = self.state.inline_text(self.arguments[0], self.lineno)
             pnode.append(nodes.paragraph('', '', *(n + m)))
         self.state.nested_parse(content, self.content_offset, pnode)
         if pnode.children and isinstance(pnode[0], nodes.paragraph):
+            content = nodes.inline(pnode[0].rawsource, translatable=True)
+            content.source = pnode[0].source
+            content.line = pnode[0].line
+            content += pnode[0].children
+            pnode[0].replace_self(nodes.paragraph('', '', content, translatable=False))
             pnode[0].insert(0, add_text)
             pnode[0].insert(1, nodes.Text(' '))
         else:
