@@ -34,11 +34,8 @@ copyright = u'1990-%s, Python Software Foundation (translated by Python ドキ�
 
 # We look for the Include/patchlevel.h file in the current Python source tree
 # and replace the values accordingly.
-
-# JP: ../Include が無いので patchlevel モジュールを使わない
-#import patchlevel
-#version, release = patchlevel.get_version_info()
-version, release = '2.7', '2.7.x'
+import patchlevel
+version, release = patchlevel.get_version_info()
 
 language = 'ja'
 
