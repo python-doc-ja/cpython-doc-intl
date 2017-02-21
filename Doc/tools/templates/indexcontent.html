@@ -1,18 +1,12 @@
 {% extends "layout.html" %}
-{% set title = _('Overview') %}
+{%- block htmltitle -%}
+<title>{{ shorttitle }}</title>
+{%- endblock -%}
 {% block body %}
   <h1>{{ docstitle|e }}</h1>
   <p>
-  {% block description %}
-  {{ project|e }} {{ release|e }} ドキュメント
-  {% if last_updated %}<br/>最終更新日: {{ last_updated|e }}{% endif %}
-  {% endblock %}
+  {% trans %}Welcome! This is the documentation for Python {{ release }}.{% endtrans %}
   </p>
-  <p>
-  {{ project|e }} {{ release|e }} のドキュメントの日本語訳です。
-  </p>
-  </p>
-{% block tables %}
   <p><strong>{% trans %}Parts of the documentation:{% endtrans %}</strong></p>
   <table class="contentstable" align="center"><tr>
     <td width="50%">
