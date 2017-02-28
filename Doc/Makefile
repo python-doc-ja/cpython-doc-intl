@@ -187,5 +187,5 @@ autobuild-stable-html:
 # i18n commands
 .PHONY: gettext
 gettext:
-	sphinx-build -E -b gettext -D gettext_compact=0  -w warnings.txt -d build/.doctrees . locale/pot
-	find locale/pot -name '*.pot' | xargs sed -i -e '/^"POT-Creation-Date: 20/d'
+	$(SPHINXBUILD) -E -b gettext -D gettext_compact=0  -w warnings.txt -d build/.doctrees . locale/pot
+	$(PYTHON) tools/delete_pot_creation_date.py locale/pot
