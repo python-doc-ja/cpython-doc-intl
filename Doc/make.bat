@@ -40,6 +40,9 @@ if "%1" == "clean" (
     goto end
 )
 
+rem JP: i18n target
+if "%1" EQU "gettext" goto gettext
+
 %SPHINXBUILD% >nul 2> nul
 if errorlevel 9009 (
     echo.
@@ -124,6 +127,12 @@ goto end
 
 :serve
 cmd /C %PYTHON% ..\Tools\scripts\serve.py %BUILDDIR%\html
+goto end
+
+:gettext
+cmd /C %SPHINXBUILD% -E -b gettext -D gettext_compact=0  -w warnings.txt -d build\.doctrees . locale\pot
+cmd /C %PYTHON% tools\delete_pot_creation_date.py locale\pot
+
 goto end
 
 :end
