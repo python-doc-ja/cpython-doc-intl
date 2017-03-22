@@ -21,7 +21,7 @@ from docutils import nodes, utils
 
 from sphinx import addnodes
 from sphinx.builders import Builder
-import sphinx.locale
+from sphinx.locale import translators
 from sphinx.util.nodes import split_explicit_title
 from sphinx.util.compat import Directive
 from sphinx.writers.html import HTMLTranslator
@@ -109,7 +109,7 @@ class ImplementationDetail(Directive):
 
     def run(self):
         pnode = nodes.compound(classes=['impl-detail'])
-        label = sphinx.locale.translators['sphinx'].gettext(self.label_text)
+        label = translators['sphinx'].gettext(self.label_text)
         content = self.content
         add_text = nodes.strong(label, label)
         if self.arguments:
@@ -121,7 +121,8 @@ class ImplementationDetail(Directive):
             content.source = pnode[0].source
             content.line = pnode[0].line
             content += pnode[0].children
-            pnode[0].replace_self(nodes.paragraph('', '', content, translatable=False))
+            pnode[0].replace_self(nodes.paragraph('', '', content,
+                                                  translatable=False))
             pnode[0].insert(0, add_text)
             pnode[0].insert(1, nodes.Text(' '))
         else:
