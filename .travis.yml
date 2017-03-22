@@ -38,15 +38,6 @@ matrix:
       script:
         - make html SPHINXOPTS="-q"
         - make check
-    - os: linux
-      language: cpp
-      compiler: clang
-      env:
-        - TESTING="C++ header compatibility"
-      before_script:
-        - ./configure
-      script:
-        - echo '#include "Python.h"' > test.cc && $CXX -c test.cc -o /dev/null -I ./Include -I .
 
 # Travis provides only 2 cores, so don't overdue the parallelism and waste memory.
 before_script:

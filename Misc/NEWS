@@ -10,6 +10,9 @@ What's New in Python 2.7.14?
 Core and Builtins
 -----------------
 
+- bpo-28598: Support __rmod__ for subclasses of str being called before
+  str.__mod__.  Patch by Martijn Pieters.
+
 - bpo-29602: Fix incorrect handling of signed zeros in complex constructor for
   complex subclasses and for inputs having a __complex__ method. Patch
   by Serhiy Storchaka.
@@ -35,6 +38,13 @@ Extension Modules
 
 Library
 -------
+
+- bpo-27880: Fixed integer overflow in cPickle when pickle large strings or
+  too many objects.
+
+- bpo-29110: Fix file object leak in aifc.open() when file is given as a
+  filesystem path and is not in valid AIFF format.
+  Original patch by Anthony Zhang.
 
 - Issue #29354: Fixed inspect.getargs() for parameters which are cell
   variables.
@@ -92,6 +102,8 @@ C API
 Documentation
 -------------
 
+- bpo-28929: Link the documentation to its source file on GitHub.
+
 - Issue #26355: Add canonical header link on each page to corresponding major
   version of the documentation. Patch by Matthias Bussonnier.
 
@@ -102,6 +114,8 @@ Documentation
 
 Build
 -----
+
+- bpo-29572: Update Windows build and OS X installers to use OpenSSL 1.0.2k.
 
 - Issue #28768: Fix implicit declaration of function _setmode. Patch by
   Masayuki Yamamoto
