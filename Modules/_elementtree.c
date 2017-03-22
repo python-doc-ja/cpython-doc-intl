@@ -524,8 +524,9 @@ subelement(PyObject* self, PyObject* args, PyObject* kw)
     }
 
     elem = element_new(tag, attrib);
-
     Py_DECREF(attrib);
+    if (elem == NULL)
+        return NULL;
 
     if (element_add_subelement(parent, elem) < 0) {
         Py_DECREF(elem);
@@ -1542,7 +1543,7 @@ element_getattr(ElementObject* self, char* name)
         return res;
     } else if (strcmp(name, "text") == 0) {
         res = element_get_text(self);
-        Py_INCREF(res);
+        Py_XINCREF(res);
         return res;
     }
 
