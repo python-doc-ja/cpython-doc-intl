@@ -10,6 +10,9 @@ Release date: XXXX-XX-XX
 Core and Builtins
 -----------------
 
+- bpo-29935: Fixed error messages in the index() method of tuple, list and deque
+  when pass indices of wrong type.
+
 - bpo-28876: ``bool(range)`` works even if ``len(range)``
   raises :exc:`OverflowError`.
 
@@ -45,6 +48,44 @@ Extension Modules
 
 Library
 -------
+
+- bpo-30070: Fixed leaks and crashes in errors handling in the parser module.
+
+- bpo-30061: Fixed crashes in IOBase methods __next__() and readlines() when
+  readline() or __next__() respectively return non-sizeable object.
+  Fixed possible other errors caused by not checking results of PyObject_Size(),
+  PySequence_Size(), or PyMapping_Size().
+
+- bpo-30068: _io._IOBase.readlines will check if it's closed first when
+  hint is present.
+
+- bpo-29694: Fixed race condition in pathlib mkdir with flags
+  parents=True.  Patch by Armin Rigo.
+
+- bpo-29692: Fixed arbitrary unchaining of RuntimeError exceptions in
+  contextlib.contextmanager.  Patch by Siddharth Velankar.
+
+- bpo-29998: Pickling and copying ImportError now preserves name and path
+  attributes.
+
+- bpo-29942: Fix a crash in itertools.chain.from_iterable when encountering
+  long runs of empty iterables.
+
+- bpo-27863: Fixed multiple crashes in ElementTree caused by race conditions
+  and wrong types.
+
+- bpo-28699: Fixed a bug in pools in multiprocessing.pool that raising an
+  exception at the very first of an iterable may swallow the exception or
+  make the program hang. Patch by Davin Potts and Xiang Zhang.
+
+- bpo-25803: Avoid incorrect errors raised by Path.mkdir(exist_ok=True)
+  when the OS gives priority to errors such as EACCES over EEXIST.
+
+- bpo-29861: Release references to tasks, their arguments and their results
+  as soon as they are finished in multiprocessing.Pool.
+
+- bpo-29884: faulthandler: Restore the old sigaltstack during teardown.
+  Patch by Christophe Zeitouny.
 
 - bpo-25455: Fixed crashes in repr of recursive buffered file-like objects.
 
@@ -126,8 +167,8 @@ C API
 -----
 
 - Issue #27867: Function PySlice_GetIndicesEx() is replaced with a macro if
-  Py_LIMITED_API is not set or set to the value between 0x03050400
-  and 0x03060000 (not including) or 0x03060100 or higher.
+  Py_LIMITED_API is set to the value between 0x03050400 and 0x03060000 (not
+  including) or 0x03060100 or higher.
 
 - Issue #29083: Fixed the declaration of some public API functions.
   PyArg_VaParse() and PyArg_VaParseTupleAndKeywords() were not available in
@@ -138,6 +179,8 @@ C API
 Documentation
 -------------
 
+- bpo-26985: Add missing info of code object in inspect documentation.
+
 - bpo-28929: Link the documentation to its source file on GitHub.
 
 - bpo-25008: Document smtpd.py as effectively deprecated and add a pointer to
@@ -147,6 +190,11 @@ Documentation
   version of the documentation. Patch by Matthias Bussonnier.
 
 - Issue #29349: Fix Python 2 syntax in code for building the documentation.
+
+Build
+-----
+
+- bpo-29643: Fix ``--enable-optimization`` didn't work.
 
 Tests
 -----
@@ -322,7 +370,7 @@ Library
 - Issue #28427: old keys should not remove new values from
   WeakValueDictionary when collecting from another thread.
 
-- Issue 28923: Remove editor artifacts from Tix.py.
+- Issue #28923: Remove editor artifacts from Tix.py.
 
 - Issue #28871: Fixed a crash when deallocate deep ElementTree.
 
@@ -445,7 +493,7 @@ Library
 
 - Issue #27599: Fixed buffer overrun in binascii.b2a_qp() and binascii.a2b_qp().
 
-- Issue #19003:m email.generator now replaces only \r and/or \n line
+- Issue #19003:m email.generator now replaces only ``\r`` and/or ``\n`` line
   endings, per the RFC, instead of all unicode line endings.
 
 - Issue #28019: itertools.count() no longer rounds non-integer step in range
@@ -468,7 +516,7 @@ Library
 - Issue #27445: Don't pass str(_charset) to MIMEText.set_payload().
   Patch by Claude Paroz.
 
-- Issue #22450: urllib now includes an "Accept: */*" header among the
+- Issue #22450: urllib now includes an ``Accept: */*`` header among the
   default headers.  This makes the results of REST API requests more
   consistent and predictable especially when proxy servers are involved.
 
@@ -483,7 +531,7 @@ Library
   characters, not on arbitrary unicode line breaks.  This also fixes a bug in
   HTTP header parsing.
 
-- Issue 27988: Fix email iter_attachments incorrect mutation of payload list.
+- Issue #27988: Fix email iter_attachments incorrect mutation of payload list.
 
 - Issue #27691: Fix ssl module's parsing of GEN_RID subject alternative name
   fields in X.509 certs.
@@ -934,7 +982,7 @@ Core and Builtins
   cookie names.
 
 - Issue #4806: Avoid masking the original TypeError exception when using star
-  (*) unpacking in function calls.  Based on patch by Hagen Fürstenau and
+  (``*``) unpacking in function calls.  Based on patch by Hagen Fürstenau and
   Daniel Urban.
 
 - Issue #27138: Fix the doc comment for FileFinder.find_spec().
@@ -1314,7 +1362,7 @@ Library
 - Issue #25672: In the ssl module, enable the SSL_MODE_RELEASE_BUFFERS mode
   option if it is safe to do so.
 
-- Issue #26012: Don't traverse into symlinks for ** pattern in
+- Issue #26012: Don't traverse into symlinks for ``**`` pattern in
   pathlib.Path.[r]glob().
 
 - Issue #24120: Ignore PermissionError when traversing a tree with
@@ -1724,7 +1772,7 @@ Library
 
 - Issue #25584: Added "escape" to the __all__ list in the glob module.
 
-- Issue #25584: Fixed recursive glob() with patterns starting with '\*\*'.
+- Issue #25584: Fixed recursive glob() with patterns starting with ``**``.
 
 - Issue #25446: Fix regression in smtplib's AUTH LOGIN support.
 
@@ -3267,7 +3315,7 @@ Library
 
 - Issue #23521: Corrected pure python implementation of timedelta division.
 
- * Eliminated OverflowError from timedelta * float for some floats;
+ * Eliminated OverflowError from ``timedelta * float`` for some floats;
  * Corrected rounding in timedlta true division.
 
 - Issue #21619: Popen objects no longer leave a zombie after exit in the with
@@ -4066,7 +4114,7 @@ Library
   character instead of truncating it.  Based on patch by Victor Stinner.
 
 - Issue #13968: The glob module now supports recursive search in
-  subdirectories using the "**" pattern.
+  subdirectories using the ``**`` pattern.
 
 - Issue #21951: Fixed a crash in Tkinter on AIX when called Tcl command with
   empty string or tuple argument.
