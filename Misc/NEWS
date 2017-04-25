@@ -10,6 +10,9 @@ What's New in Python 2.7.14?
 Core and Builtins
 -----------------
 
+- bpo-29935: Fixed error messages in the index() method of tuple and list
+  when pass indices of wrong type.
+
 - bpo-28598: Support __rmod__ for subclasses of str being called before
   str.__mod__.  Patch by Martijn Pieters.
 
@@ -38,6 +41,27 @@ Extension Modules
 
 Library
 -------
+
+- bpo-30070: Fixed leaks and crashes in errors handling in the parser module.
+
+- bpo-30061: Fixed crashes in IOBase methods next() and readlines() when
+  readline() or next() respectively return non-sizeable object.
+  Fixed possible other errors caused by not checking results of PyObject_Size(),
+  PySequence_Size(), or PyMapping_Size().
+
+- bpo-30011: Fixed race condition in HTMLParser.unescape().
+
+- bpo-30068: _io._IOBase.readlines will check if it's closed first when
+  hint is present.
+
+- bpo-27863: Fixed multiple crashes in ElementTree caused by race conditions
+  and wrong types.
+
+- bpo-29942: Fix a crash in itertools.chain.from_iterable when encountering
+  long runs of empty iterables.
+
+- bpo-29861: Release references to tasks, their arguments and their results
+  as soon as they are finished in multiprocessing.Pool.
 
 - bpo-27880: Fixed integer overflow in cPickle when pickle large strings or
   too many objects.
@@ -94,11 +118,6 @@ Library
 - Issue #28925: cPickle now correctly propagates errors when unpickle instances
   of old-style classes.
 
-C API
------
-
-- Issue #27867: Function PySlice_GetIndicesEx() is replaced with a macro.
-
 Documentation
 -------------
 
@@ -115,10 +134,21 @@ Documentation
 Build
 -----
 
+- bpo-29643: Fix ``--enable-optimization`` configure option didn't work.
+
 - bpo-29572: Update Windows build and OS X installers to use OpenSSL 1.0.2k.
 
 - Issue #28768: Fix implicit declaration of function _setmode. Patch by
   Masayuki Yamamoto
+
+Tests
+-----
+
+- bpo-28087: Skip test_asyncore and test_eintr poll failures on macOS.
+  Skip some tests of select.poll when running on macOS due to unresolved
+  issues with the underlying system poll function on some macOS versions.
+
+- bpo-15083: Convert ElementTree doctests to unittests.
 
 
 What's New in Python 2.7.13
@@ -12326,4 +12356,3 @@ Mac
 ----
 
 **(For information about older versions, consult the HISTORY file.)**
-
