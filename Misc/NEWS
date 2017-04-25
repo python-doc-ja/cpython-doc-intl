@@ -10,6 +10,15 @@ What's New in Python 3.6.2 release candidate 1?
 Core and Builtins
 -----------------
 
+- bpo-12414: sys.getsizeof() on a code object now returns the sizes 
+  which includes the code struct and sizes of objects which it references.
+  Patch by Dong-hee Na.
+
+- bpo-29949: Fix memory usage regression of set and frozenset object.
+
+- bpo-29935: Fixed error messages in the index() method of tuple, list and deque
+  when pass indices of wrong type.
+
 - bpo-29859: Show correct error messages when any of the pthread_* calls in
   thread_pthread.h fails.
 
@@ -26,6 +35,50 @@ Core and Builtins
 
 Library
 -------
+
+- bpo-30070: Fixed leaks and crashes in errors handling in the parser module.
+
+- bpo-30061: Fixed crashes in IOBase methods __next__() and readlines() when
+  readline() or __next__() respectively return non-sizeable object.
+  Fixed possible other errors caused by not checking results of PyObject_Size(),
+  PySequence_Size(), or PyMapping_Size().
+
+- bpo-30017: Allowed calling the close() method of the zip entry writer object
+  multiple times.  Writing to a closed writer now always produces a ValueError.
+
+- bpo-30068: _io._IOBase.readlines will check if it's closed first when
+  hint is present.
+
+- bpo-29694: Fixed race condition in pathlib mkdir with flags
+  parents=True.  Patch by Armin Rigo.
+
+- bpo-29692: Fixed arbitrary unchaining of RuntimeError exceptions in
+  contextlib.contextmanager.  Patch by Siddharth Velankar.
+
+- bpo-29998: Pickling and copying ImportError now preserves name and path
+  attributes.
+
+- bpo-29953: Fixed memory leaks in the replace() method of datetime and time
+  objects when pass out of bound fold argument.
+
+- bpo-29942: Fix a crash in itertools.chain.from_iterable when encountering
+  long runs of empty iterables.
+
+- bpo-27863: Fixed multiple crashes in ElementTree caused by race conditions
+  and wrong types.
+
+- bpo-28699: Fixed a bug in pools in multiprocessing.pool that raising an
+  exception at the very first of an iterable may swallow the exception or
+  make the program hang. Patch by Davin Potts and Xiang Zhang.
+
+- bpo-25803: Avoid incorrect errors raised by Path.mkdir(exist_ok=True)
+  when the OS gives priority to errors such as EACCES over EEXIST.
+
+- bpo-29861: Release references to tasks, their arguments and their results
+  as soon as they are finished in multiprocessing.Pool.
+
+- bpo-29884: faulthandler: Restore the old sigaltstack during teardown.
+  Patch by Christophe Zeitouny.
 
 - bpo-25455: Fixed crashes in repr of recursive buffered file-like objects.
 
@@ -50,6 +103,16 @@ Library
 - bpo-29615: SimpleXMLRPCDispatcher no longer chains KeyError (or any other
   exception) to exception(s) raised in the dispatched methods.
   Patch by Petr Motejlek.
+
+Build
+-----
+
+- bpo-29643: Fix ``--enable-optimization`` didn't work.
+
+Documentation
+-------------
+
+- bpo-26985: Add missing info of code object in inspect documentation.
 
 
 What's New in Python 3.6.1?
@@ -258,7 +321,7 @@ Library
 - Issue #28427: old keys should not remove new values from
   WeakValueDictionary when collecting from another thread.
 
-- Issue 28923: Remove editor artifacts from Tix.py.
+- Issue #28923: Remove editor artifacts from Tix.py.
 
 - Issue #29055:  Neaten-up empty population error on random.choice()
   by suppressing the upstream exception.
@@ -1026,7 +1089,7 @@ Core and Builtins
   alpha releases, where backslashes are allowed anywhere in an
   f-string.  Also, require that expressions inside f-strings be
   enclosed within literal braces, and not escapes like
-  f'\x7b"hi"\x7d'.
+  ``f'\x7b"hi"\x7d'``.
 
 - Issue #28046: Remove platform-specific directories from sys.path.
 
@@ -1245,7 +1308,7 @@ Library
 - Issue #24277: The new email API is no longer provisional, and the docs
   have been reorganized and rewritten to emphasize the new API.
 
-- Issue #22450: urllib now includes an "Accept: */*" header among the
+- Issue #22450: urllib now includes an ``Accept: */*`` header among the
   default headers.  This makes the results of REST API requests more
   consistent and predictable especially when proxy servers are involved.
 
@@ -1264,9 +1327,9 @@ Library
   characters, not on arbitrary unicode line breaks.  This also fixes a bug in
   HTTP header parsing.
 
-- Issue 27331: The email.mime classes now all accept an optional policy keyword.
+- Issue #27331: The email.mime classes now all accept an optional policy keyword.
 
-- Issue 27988: Fix email iter_attachments incorrect mutation of payload list.
+- Issue #27988: Fix email iter_attachments incorrect mutation of payload list.
 
 - Issue #16113: Add SHA-3 and SHAKE support to hashlib module.
 
@@ -2374,7 +2437,7 @@ Core and Builtins
   in ``def f(): 1.0``.
 
 - Issue #4806: Avoid masking the original TypeError exception when using star
-  (*) unpacking in function calls.  Based on patch by Hagen Fürstenau and
+  (``*``) unpacking in function calls.  Based on patch by Hagen Fürstenau and
   Daniel Urban.
 
 - Issue #26146: Add a new kind of AST node: ``ast.Constant``. It can be used
@@ -2932,7 +2995,7 @@ Library
 - Issue #25672: In the ssl module, enable the SSL_MODE_RELEASE_BUFFERS mode
   option if it is safe to do so.
 
-- Issue #26012: Don't traverse into symlinks for ** pattern in
+- Issue #26012: Don't traverse into symlinks for ``**`` pattern in
   pathlib.Path.[r]glob().
 
 - Issue #24120: Ignore PermissionError when traversing a tree with
@@ -3068,7 +3131,7 @@ Library
 
 - Issue #25584: Added "escape" to the __all__ list in the glob module.
 
-- Issue #25584: Fixed recursive glob() with patterns starting with '\*\*'.
+- Issue #25584: Fixed recursive glob() with patterns starting with ``**``.
 
 - Issue #25446: Fix regression in smtplib's AUTH LOGIN support.
 
@@ -3703,7 +3766,7 @@ Library
 - Issue #28427: old keys should not remove new values from
   WeakValueDictionary when collecting from another thread.
 
-- Issue 28923: Remove editor artifacts from Tix.py.
+- Issue #28923: Remove editor artifacts from Tix.py.
 
 - Issue #28871: Fixed a crash when deallocate deep ElementTree.
 
@@ -3826,7 +3889,7 @@ Library
 
 - Issue #27599: Fixed buffer overrun in binascii.b2a_qp() and binascii.a2b_qp().
 
-- Issue #19003:m email.generator now replaces only \r and/or \n line
+- Issue #19003:m email.generator now replaces only ``\r`` and/or ``\n`` line
   endings, per the RFC, instead of all unicode line endings.
 
 - Issue #28019: itertools.count() no longer rounds non-integer step in range
@@ -3849,7 +3912,7 @@ Library
 - Issue #27445: Don't pass str(_charset) to MIMEText.set_payload().
   Patch by Claude Paroz.
 
-- Issue #22450: urllib now includes an "Accept: */*" header among the
+- Issue #22450: urllib now includes an ``Accept: */*`` header among the
   default headers.  This makes the results of REST API requests more
   consistent and predictable especially when proxy servers are involved.
 
@@ -3864,7 +3927,7 @@ Library
   characters, not on arbitrary unicode line breaks.  This also fixes a bug in
   HTTP header parsing.
 
-- Issue 27988: Fix email iter_attachments incorrect mutation of payload list.
+- Issue #27988: Fix email iter_attachments incorrect mutation of payload list.
 
 - Issue #27691: Fix ssl module's parsing of GEN_RID subject alternative name
   fields in X.509 certs.
@@ -4315,7 +4378,7 @@ Core and Builtins
   cookie names.
 
 - Issue #4806: Avoid masking the original TypeError exception when using star
-  (*) unpacking in function calls.  Based on patch by Hagen Fürstenau and
+  (``*``) unpacking in function calls.  Based on patch by Hagen Fürstenau and
   Daniel Urban.
 
 - Issue #27138: Fix the doc comment for FileFinder.find_spec().
@@ -4695,7 +4758,7 @@ Library
 - Issue #25672: In the ssl module, enable the SSL_MODE_RELEASE_BUFFERS mode
   option if it is safe to do so.
 
-- Issue #26012: Don't traverse into symlinks for ** pattern in
+- Issue #26012: Don't traverse into symlinks for ``**`` pattern in
   pathlib.Path.[r]glob().
 
 - Issue #24120: Ignore PermissionError when traversing a tree with
@@ -5105,7 +5168,7 @@ Library
 
 - Issue #25584: Added "escape" to the __all__ list in the glob module.
 
-- Issue #25584: Fixed recursive glob() with patterns starting with '\*\*'.
+- Issue #25584: Fixed recursive glob() with patterns starting with ``**``.
 
 - Issue #25446: Fix regression in smtplib's AUTH LOGIN support.
 
@@ -6648,7 +6711,7 @@ Library
 
 - Issue #23521: Corrected pure python implementation of timedelta division.
 
- * Eliminated OverflowError from timedelta * float for some floats;
+ * Eliminated OverflowError from ``timedelta * float`` for some floats;
  * Corrected rounding in timedlta true division.
 
 - Issue #21619: Popen objects no longer leave a zombie after exit in the with
@@ -7447,7 +7510,7 @@ Library
   character instead of truncating it.  Based on patch by Victor Stinner.
 
 - Issue #13968: The glob module now supports recursive search in
-  subdirectories using the "**" pattern.
+  subdirectories using the ``**`` pattern.
 
 - Issue #21951: Fixed a crash in Tkinter on AIX when called Tcl command with
   empty string or tuple argument.
