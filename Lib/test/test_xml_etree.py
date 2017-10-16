@@ -8,6 +8,7 @@
 
 import cgi
 import copy
+import functools
 import io
 import pickle
 import StringIO
@@ -29,6 +30,7 @@ ET = None
 
 SIMPLE_XMLFILE = findfile("simple.xml", subdir="xmltestdata")
 SIMPLE_NS_XMLFILE = findfile("simple-ns.xml", subdir="xmltestdata")
+UTF8_BUG_XMLFILE = findfile("expat224_utf8_bug.xml", subdir="xmltestdata")
 
 SAMPLE_XML = """\
 <body>
@@ -84,6 +86,16 @@ ENTITY_XML = """\
 ]>
 <document>&entity;</document>
 """
+
+
+def checkwarnings(*filters):
+    def decorator(test):
+        def newtest(*args, **kwargs):
+            with support.check_warnings(*filters):
+                test(*args, **kwargs)
+        functools.update_wrapper(newtest, test)
+        return newtest
+    return decorator
 
 
 class ModuleTest(unittest.TestCase):
@@ -656,6 +668,10 @@ class ElementTreeTest(unittest.TestCase):
             ])
 
 
+    # Element.getchildren() and ElementTree.getiterator() are deprecated.
+    @checkwarnings(("This method will be removed in future versions.  "
+                    "Use .+ instead.",
+                    (DeprecationWarning, PendingDeprecationWarning)))
     def test_getchildren(self):
         # Test Element.getchildren()
 
@@ -1323,6 +1339,7 @@ class BugsTest(unittest.TestCase):
         self.assertEqual(t.find('.//paragraph').text,
             u'A new cultivar of Begonia plant named \u2018BCT9801BEG\u2019.')
 
+    @unittest.skipIf(sys.gettrace(), "Skips under coverage.")
     def test_bug_xmltoolkit63(self):
         # Check reference leak.
         def xmltoolkit63():
@@ -1356,9 +1373,15 @@ class BugsTest(unittest.TestCase):
 
         # Test custom builder.
         class EchoTarget:
+            def start(self, tag, attrib):
+                pass
+            def end(self, tag):
+                pass
+            def data(self, text):
+                pass
             def close(self):
                 return ET.Element("element") # simulate root
-        parser = ET.XMLParser(EchoTarget())
+        parser = ET.XMLParser(target=EchoTarget())
         parser.feed("<element>some text</element>")
         self.assertEqual(parser.close().tag, 'element')
 
@@ -1471,6 +1494,36 @@ class BugsTest(unittest.TestCase):
 
         ET.register_namespace('test10777', 'http://myuri/')
         ET.register_namespace('test10777', 'http://myuri/')
+
+    def check_expat224_utf8_bug(self, text):
+        xml = b'<a b="%s"/>' % text
+        root = ET.XML(xml)
+        self.assertEqual(root.get('b'), text.decode('utf-8'))
+
+    def test_expat224_utf8_bug(self):
+        # bpo-31170: Expat 2.2.3 had a bug in its UTF-8 decoder.
+        # Check that Expat 2.2.4 fixed the bug.
+        #
+        # Test buffer bounds at odd and even positions.
+
+        text = b'\xc3\xa0' * 1024
+        self.check_expat224_utf8_bug(text)
+
+        text = b'x' + b'\xc3\xa0' * 1024
+        self.check_expat224_utf8_bug(text)
+
+    def test_expat224_utf8_bug_file(self):
+        with open(UTF8_BUG_XMLFILE, 'rb') as fp:
+            raw = fp.read()
+        root = ET.fromstring(raw)
+        xmlattr = root.get('b')
+
+        # "Parse" manually the XML file to extract the value of the 'b'
+        # attribute of the <a b='xxx' /> XML element
+        text = raw.decode('utf-8').strip()
+        text = text.replace('\r\n', ' ')
+        text = text[6:-4]
+        self.assertEqual(root.get('b'), text)
 
 
 # --------------------------------------------------------------------
@@ -1908,7 +1961,12 @@ class ElementFindTest(unittest.TestCase):
         e = ET.XML(SAMPLE_XML)
         self.assertEqual(ET.ElementTree(e).find('tag').tag, 'tag')
         self.assertEqual(ET.ElementTree(e).find('./tag').tag, 'tag')
-        self.assertEqual(ET.ElementTree(e).find('/tag').tag, 'tag')
+        # this produces a warning
+        msg = ("This search is broken in 1.3 and earlier, and will be fixed "
+               "in a future version.  If you rely on the current behaviour, "
+               "change it to '.+'")
+        with support.check_warnings((msg, FutureWarning)):
+            self.assertEqual(ET.ElementTree(e).find('/tag').tag, 'tag')
         e[2] = ET.XML(SAMPLE_SECTION)
         self.assertEqual(ET.ElementTree(e).find('section/tag').tag, 'tag')
         self.assertIsNone(ET.ElementTree(e).find('tog'))
@@ -1919,14 +1977,15 @@ class ElementFindTest(unittest.TestCase):
         self.assertEqual(ET.ElementTree(e).findtext('tog/foo', 'default'),
              'default')
         self.assertEqual(ET.ElementTree(e).findtext('./tag'), 'text')
-        self.assertEqual(ET.ElementTree(e).findtext('/tag'), 'text')
+        with support.check_warnings((msg, FutureWarning)):
+            self.assertEqual(ET.ElementTree(e).findtext('/tag'), 'text')
         self.assertEqual(ET.ElementTree(e).findtext('section/tag'), 'subtext')
 
         self.assertEqual(summarize_list(ET.ElementTree(e).findall('./tag')),
             ['tag'] * 2)
-        # this produces a warning
-        self.assertEqual(summarize_list(ET.ElementTree(e).findall('/tag')),
-            ['tag'] * 2)
+        with support.check_warnings((msg, FutureWarning)):
+            it = ET.ElementTree(e).findall('/tag')
+        self.assertEqual(summarize_list(it), ['tag'] * 2)
 
 
 class ElementIterTest(unittest.TestCase):
@@ -2014,6 +2073,15 @@ class ElementIterTest(unittest.TestCase):
         self.assertEqual(self._ilist(doc, '*'), all_tags)
 
     def test_getiterator(self):
+        # Element.getiterator() is deprecated.
+        if sys.py3kwarning or ET is pyET:
+            with support.check_warnings(("This method will be removed in future versions.  "
+                                         "Use .+ instead.", PendingDeprecationWarning)):
+                self._test_getiterator()
+        else:
+            self._test_getiterator()
+
+    def _test_getiterator(self):
         doc = ET.XML('''
             <document>
                 <house>
@@ -2178,13 +2246,13 @@ class XMLParserTest(unittest.TestCase):
     def test_constructor_args(self):
         # Positional args. The first (html) is not supported, but should be
         # nevertheless correctly accepted.
-        parser = ET.XMLParser(None, ET.TreeBuilder(), 'utf-8')
+        with support.check_py3k_warnings((r'.*\bhtml\b', DeprecationWarning)):
+            parser = ET.XMLParser(None, ET.TreeBuilder(), 'utf-8')
         parser.feed(self.sample1)
         self._check_sample_element(parser.close())
 
         # Now as keyword args.
         parser2 = ET.XMLParser(encoding='utf-8',
-                               html=[{}],
                                target=ET.TreeBuilder())
         parser2.feed(self.sample1)
         self._check_sample_element(parser2.close())
@@ -2593,44 +2661,6 @@ class NoAcceleratorTest(unittest.TestCase):
 # --------------------------------------------------------------------
 
 
-class CleanContext(object):
-    """Provide default namespace mapping and path cache."""
-    checkwarnings = None
-
-    def __init__(self, quiet=False):
-        deprecations = (
-            ("This method of XMLParser is deprecated.  Define doctype\(\) "
-             "method on the TreeBuilder target.", DeprecationWarning),
-            # Search behaviour is broken if search path starts with "/".
-            ("This search is broken in 1.3 and earlier, and will be fixed "
-             "in a future version.  If you rely on the current behaviour, "
-             "change it to '.+'", FutureWarning),
-            # Element.getchildren() and Element.getiterator() are deprecated.
-            ("This method will be removed in future versions.  "
-             "Use .+ instead.", DeprecationWarning),
-            ("This method will be removed in future versions.  "
-             "Use .+ instead.", PendingDeprecationWarning))
-        self.checkwarnings = support.check_warnings(*deprecations, quiet=quiet)
-
-    def __enter__(self):
-        from xml.etree import ElementPath
-        self._nsmap = pyET._namespace_map
-        # Copy the default namespace mapping
-        self._nsmap_copy = self._nsmap.copy()
-        # Copy the path cache (should be empty)
-        self._path_cache = ElementPath._cache
-        ElementPath._cache = self._path_cache.copy()
-        self.checkwarnings.__enter__()
-
-    def __exit__(self, *args):
-        from xml.etree import ElementPath
-        # Restore mapping and path cache
-        self._nsmap.clear()
-        self._nsmap.update(self._nsmap_copy)
-        ElementPath._cache = self._path_cache
-        self.checkwarnings.__exit__(*args)
-
-
 def test_main(module=None):
     # When invoked without a module, runs the Python ET tests by loading pyET.
     # Otherwise, uses the given module as the ET.
@@ -2666,11 +2696,22 @@ def test_main(module=None):
             NoAcceleratorTest,
             ])
 
+    # Provide default namespace mapping and path cache.
+    from xml.etree import ElementPath
+    nsmap = pyET._namespace_map
+    # Copy the default namespace mapping
+    nsmap_copy = nsmap.copy()
+    # Copy the path cache (should be empty)
+    path_cache = ElementPath._cache
+    ElementPath._cache = path_cache.copy()
     try:
-        # XXX the C module should give the same warnings as the Python module
-        with CleanContext(quiet=(pyET is not ET)):
-            support.run_unittest(*test_classes)
+        support.run_unittest(*test_classes)
     finally:
+        from xml.etree import ElementPath
+        # Restore mapping and path cache
+        nsmap.clear()
+        nsmap.update(nsmap_copy)
+        ElementPath._cache = path_cache
         # don't interfere with subsequent tests
         ET = None
 

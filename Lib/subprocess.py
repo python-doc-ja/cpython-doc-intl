@@ -71,6 +71,10 @@ if mswindows:
 else:
     import select
     _has_poll = hasattr(select, 'poll')
+    try:
+        import threading
+    except ImportError:
+        threading = None
     import fcntl
     import pickle
 
@@ -720,10 +724,11 @@ class Popen(object):
                         if e.errno == errno.EPIPE:
                             # communicate() should ignore broken pipe error
                             pass
-                        elif (e.errno == errno.EINVAL
-                              and self.poll() is not None):
-                            # Issue #19612: stdin.write() fails with EINVAL
-                            # if the process already exited before the write
+                        elif e.errno == errno.EINVAL:
+                            # bpo-19612, bpo-30418: On Windows, stdin.write()
+                            # fails with EINVAL if the child process exited or
+                            # if the child process is still running but closed
+                            # the pipe.
                             pass
                         else:
                             raise
@@ -877,6 +882,21 @@ class Popen(object):
                         pass
 
 
+        # Used as a bandaid workaround for https://bugs.python.org/issue27448
+        # to prevent multiple simultaneous subprocess launches from interfering
+        # with one another and leaving gc disabled.
+        if threading:
+            _disabling_gc_lock = threading.Lock()
+        else:
+            class _noop_context_manager(object):
+                # A dummy context manager that does nothing for the rare
+                # user of a --without-threads build.
+                def __enter__(self): pass
+                def __exit__(self, *args): pass
+
+            _disabling_gc_lock = _noop_context_manager()
+
+
         def _execute_child(self, args, executable, preexec_fn, close_fds,
                            cwd, env, universal_newlines,
                            startupinfo, creationflags, shell, to_close,
@@ -908,10 +928,12 @@ class Popen(object):
             errpipe_read, errpipe_write = self.pipe_cloexec()
             try:
                 try:
-                    gc_was_enabled = gc.isenabled()
-                    # Disable gc to avoid bug where gc -> file_dealloc ->
-                    # write to stderr -> hang.  http://bugs.python.org/issue1336
-                    gc.disable()
+                    with self._disabling_gc_lock:
+                        gc_was_enabled = gc.isenabled()
+                        # Disable gc to avoid bug where gc -> file_dealloc ->
+                        # write to stderr -> hang.
+                        # https://bugs.python.org/issue1336
+                        gc.disable()
                     try:
                         self.pid = os.fork()
                     except:
@@ -985,9 +1007,10 @@ class Popen(object):
                             exc_value.child_traceback = ''.join(exc_lines)
                             os.write(errpipe_write, pickle.dumps(exc_value))
 
-                        # This exitcode won't be reported to applications, so it
-                        # really doesn't matter what we return.
-                        os._exit(255)
+                        finally:
+                            # This exitcode won't be reported to applications, so it
+                            # really doesn't matter what we return.
+                            os._exit(255)
 
                     # Parent
                     if gc_was_enabled:

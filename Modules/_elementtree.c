@@ -131,6 +131,15 @@ static PyObject* elementpath_obj;
 
 /* helpers */
 
+/* Py_SETREF for a PyObject* that uses a join flag. */
+Py_LOCAL_INLINE(void)
+_set_joined_ptr(PyObject **p, PyObject *new_joined_ptr)
+{
+    PyObject *tmp = JOIN_OBJ(*p);
+    *p = new_joined_ptr;
+    Py_DECREF(tmp);
+}
+
 LOCAL(PyObject*)
 deepcopy(PyObject* object, PyObject* memo)
 {
@@ -585,12 +594,10 @@ element_clear(ElementObject* self, PyObject* args)
     }
 
     Py_INCREF(Py_None);
-    Py_DECREF(JOIN_OBJ(self->text));
-    self->text = Py_None;
+    _set_joined_ptr(&self->text, Py_None);
 
     Py_INCREF(Py_None);
-    Py_DECREF(JOIN_OBJ(self->tail));
-    self->tail = Py_None;
+    _set_joined_ptr(&self->tail, Py_None);
 
     Py_RETURN_NONE;
 }
@@ -610,13 +617,11 @@ element_copy(ElementObject* self, PyObject* args)
     if (!element)
         return NULL;
 
-    Py_DECREF(JOIN_OBJ(element->text));
-    element->text = self->text;
-    Py_INCREF(JOIN_OBJ(element->text));
+    Py_INCREF(JOIN_OBJ(self->text));
+    _set_joined_ptr(&element->text, self->text);
 
-    Py_DECREF(JOIN_OBJ(element->tail));
-    element->tail = self->tail;
-    Py_INCREF(JOIN_OBJ(element->tail));
+    Py_INCREF(JOIN_OBJ(self->tail));
+    _set_joined_ptr(&element->tail, self->tail);
 
     if (self->extra) {
         
@@ -678,14 +683,12 @@ element_deepcopy(ElementObject* self, PyObject* args)
     text = deepcopy(JOIN_OBJ(self->text), memo);
     if (!text)
         goto error;
-    Py_DECREF(element->text);
-    element->text = JOIN_SET(text, JOIN_GET(self->text));
+    _set_joined_ptr(&element->text, JOIN_SET(text, JOIN_GET(self->text)));
 
     tail = deepcopy(JOIN_OBJ(self->tail), memo);
     if (!tail)
         goto error;
-    Py_DECREF(element->tail);
-    element->tail = JOIN_SET(tail, JOIN_GET(self->tail));
+    _set_joined_ptr(&element->tail, JOIN_SET(tail, JOIN_GET(self->tail)));
 
     if (self->extra) {
         
@@ -962,7 +965,11 @@ element_getchildren(ElementObject* self, PyObject* args)
     int i;
     PyObject* list;
 
-    /* FIXME: report as deprecated? */
+    if (PyErr_WarnPy3k("This method will be removed in future versions.  "
+                       "Use 'list(elem)' or iteration over elem instead.",
+                       1) < 0) {
+        return NULL;
+    }
 
     if (!PyArg_ParseTuple(args, ":getchildren"))
         return NULL;
@@ -984,13 +991,10 @@ element_getchildren(ElementObject* self, PyObject* args)
 }
 
 static PyObject*
-element_iter(ElementObject* self, PyObject* args)
+element_iter_impl(ElementObject* self, PyObject* tag)
 {
+    PyObject* args;
     PyObject* result;
-    
-    PyObject* tag = Py_None;
-    if (!PyArg_ParseTuple(args, "|O:iter", &tag))
-        return NULL;
 
     if (!elementtree_iter_obj) {
         PyErr_SetString(
@@ -1012,6 +1016,34 @@ element_iter(ElementObject* self, PyObject* args)
     Py_DECREF(args);
 
     return result;
+}
+
+static PyObject*
+element_iter(ElementObject* self, PyObject* args)
+{
+    PyObject* tag = Py_None;
+    if (!PyArg_ParseTuple(args, "|O:iter", &tag))
+        return NULL;
+
+    return element_iter_impl(self, tag);
+}
+
+static PyObject*
+element_getiterator(ElementObject* self, PyObject* args)
+{
+    PyObject* tag = Py_None;
+    if (!PyArg_ParseTuple(args, "|O:getiterator", &tag))
+        return NULL;
+
+    /* Change for a DeprecationWarning in 1.4 */
+    if (Py_Py3kWarningFlag &&
+        PyErr_WarnEx(PyExc_PendingDeprecationWarning,
+                     "This method will be removed in future versions.  "
+                     "Use 'tree.iter()' or 'list(tree.iter())' instead.",
+                     1) < 0) {
+        return NULL;
+    }
+    return element_iter_impl(self, tag);
 }
 
 
@@ -1237,8 +1269,10 @@ element_repr(ElementObject* self)
     if (status == 0) {
         PyObject *repr, *tag;
         tag = PyObject_Repr(self->tag);
-        if (!tag)
+        if (!tag) {
+            Py_ReprLeave((PyObject *)self);
             return NULL;
+        }
 
         repr = PyString_FromFormat("<Element %s at %p>",
                                    PyString_AS_STRING(tag), self);
@@ -1510,7 +1544,7 @@ static PyMethodDef element_methods[] = {
     {"itertext", (PyCFunction) element_itertext, METH_VARARGS},
     {"iterfind", (PyCFunction) element_iterfind, METH_VARARGS},
 
-    {"getiterator", (PyCFunction) element_iter, METH_VARARGS},
+    {"getiterator", (PyCFunction) element_getiterator, METH_VARARGS},
     {"getchildren", (PyCFunction) element_getchildren, METH_VARARGS},
 
     {"items", (PyCFunction) element_items, METH_VARARGS},
@@ -1593,13 +1627,11 @@ element_setattr(ElementObject* self, const char* name, PyObject* value)
         Py_INCREF(value);
         Py_SETREF(self->tag, value);
     } else if (strcmp(name, "text") == 0) {
-        Py_DECREF(JOIN_OBJ(self->text));
-        self->text = value;
-        Py_INCREF(self->text);
+        Py_INCREF(value);
+        _set_joined_ptr(&self->text, value);
     } else if (strcmp(name, "tail") == 0) {
-        Py_DECREF(JOIN_OBJ(self->tail));
-        self->tail = value;
-        Py_INCREF(self->tail);
+        Py_INCREF(value);
+        _set_joined_ptr(&self->tail, value);
     } else if (strcmp(name, "attrib") == 0) {
         if (!self->extra)
             element_new_extra(self, NULL);
@@ -1630,8 +1662,8 @@ static PyMappingMethods element_as_mapping = {
 };
 
 statichere PyTypeObject Element_Type = {
-    PyObject_HEAD_INIT(NULL)
-    0, "Element", sizeof(ElementObject), 0,
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "Element", sizeof(ElementObject), 0,
     /* methods */
     (destructor)element_dealloc, /* tp_dealloc */
     0, /* tp_print */
@@ -2000,8 +2032,8 @@ treebuilder_getattr(TreeBuilderObject* self, char* name)
 }
 
 statichere PyTypeObject TreeBuilder_Type = {
-    PyObject_HEAD_INIT(NULL)
-    0, "TreeBuilder", sizeof(TreeBuilderObject), 0,
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "TreeBuilder", sizeof(TreeBuilderObject), 0,
     /* methods */
     (destructor)treebuilder_dealloc, /* tp_dealloc */
     0, /* tp_print */
@@ -2866,8 +2898,8 @@ xmlparser_getattr(XMLParserObject* self, char* name)
 }
 
 statichere PyTypeObject XMLParser_Type = {
-    PyObject_HEAD_INIT(NULL)
-    0, "XMLParser", sizeof(XMLParserObject), 0,
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "XMLParser", sizeof(XMLParserObject), 0,
     /* methods */
     (destructor)xmlparser_dealloc, /* tp_dealloc */
     0, /* tp_print */

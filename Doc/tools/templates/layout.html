@@ -20,6 +20,7 @@
     {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>
     <script type="text/javascript" src="{{ pathto('_static/_jp.js', 1) }}"></script>
     {% endif %}
+    {# still using version_switch.js for docs.python.jp #}
     {% if versionswitcher is defined and not embedded %}<script type="text/javascript" src="{{ pathto('_static/version_switch.js', 1) }}"></script>{% endif %}
 {{ super() }}
     {% if builder == 'qthelp' %}
@@ -47,7 +48,7 @@
 <h3>{{ _('This Page') }}</h3>
 <ul class="this-page-menu">
   <li><a href="{{ pathto('bugs') }}">{% trans %}Report a Bug{% endtrans %}</a></li>
-  <li><a href="https://github.com/python/cpython/blob/{{ version }}/Doc/{{ sourcename|replace('txt', 'rst') }}"
+  <li><a href="https://github.com/python/cpython/blob/{{ version }}/Doc/{{ sourcename|replace('.rst.txt', '.rst') }}"
          rel="nofollow">{% trans %}Show Source{% endtrans %}</a>
   </li>
 </ul>
