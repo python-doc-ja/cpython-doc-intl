@@ -53,6 +53,7 @@
     {%- endif -%}
     {% if builder != "htmlhelp" %}
     {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>{% endif %}
+    {# still using version_switch.js for docs.python.jp #}
     {% if versionswitcher is defined and not embedded %}<script type="text/javascript" src="{{ pathto('_static/version_switch.js', 1) }}"></script>{% endif %}
     {% if pagename == 'whatsnew/changelog' and not embedded %}
     <script type="text/javascript">

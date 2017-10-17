@@ -279,7 +279,7 @@ static PyTypeObject StructTimeType;
 static PyObject *
 tmtotuple(struct tm *p
 #ifndef HAVE_STRUCT_TM_TM_ZONE
-        , const char *zone, int gmtoff
+        , const char *zone, time_t gmtoff
 #endif
 )
 {
@@ -305,7 +305,7 @@ tmtotuple(struct tm *p
 #else
     PyStructSequence_SET_ITEM(v, 9,
         PyUnicode_DecodeLocale(zone, "surrogateescape"));
-    SET(10, gmtoff);
+    PyStructSequence_SET_ITEM(v, 10, _PyLong_FromTime_t(gmtoff));
 #endif /* HAVE_STRUCT_TM_TM_ZONE */
 #undef SET
     if (PyErr_Occurred()) {
@@ -397,7 +397,7 @@ time_localtime(PyObject *self, PyObject *args)
     {
         struct tm local = buf;
         char zone[100];
-        int gmtoff;
+        time_t gmtoff;
         strftime(zone, sizeof(zone), "%Z", &buf);
         gmtoff = timegm(&buf) - when;
         return tmtotuple(&local, zone, gmtoff);
@@ -607,7 +607,7 @@ time_strftime(PyObject *self, PyObject *args)
         buf.tm_isdst = 1;
 
 #ifdef HAVE_WCSFTIME
-    format = PyUnicode_AsWideCharString(format_arg, NULL);
+    format = _PyUnicode_AsWideCharString(format_arg);
     if (format == NULL)
         return NULL;
     fmt = format;
@@ -1316,28 +1316,7 @@ The tuple items are:\n\
   DST (Daylight Savings Time) flag (-1, 0 or 1)\n\
 If the DST flag is 0, the time is given in the regular time zone;\n\
 if it is 1, the time is given in the DST time zone;\n\
-if it is -1, mktime() should guess based on the date and time.\n\
-\n\
-Variables:\n\
-\n\
-timezone -- difference in seconds between UTC and local standard time\n\
-altzone -- difference in  seconds between UTC and local DST time\n\
-daylight -- whether local time should reflect DST\n\
-tzname -- tuple of (standard time zone name, DST time zone name)\n\
-\n\
-Functions:\n\
-\n\
-time() -- return current time in seconds since the Epoch as a float\n\
-clock() -- return CPU time since process start as a float\n\
-sleep() -- delay for a number of seconds given as a float\n\
-gmtime() -- convert seconds since Epoch to UTC tuple\n\
-localtime() -- convert seconds since Epoch to local time tuple\n\
-asctime() -- convert time tuple to string\n\
-ctime() -- convert time in seconds to string\n\
-mktime() -- convert local time tuple to seconds since Epoch\n\
-strftime() -- convert time tuple to string according to format specification\n\
-strptime() -- parse string to time tuple according to format specification\n\
-tzset() -- change the local timezone");
+if it is -1, mktime() should guess based on the date and time.\n");
 
 
 

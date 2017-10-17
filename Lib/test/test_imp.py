@@ -314,6 +314,21 @@ class ImportTests(unittest.TestCase):
         loader.get_data(imp.__file__)  # File should be closed
         loader.get_data(imp.__file__)  # Will need to create a newly opened file
 
+    def test_load_source(self):
+        with self.assertRaisesRegex(ValueError, 'embedded null'):
+            imp.load_source(__name__, __file__ + "\0")
+
+    @support.cpython_only
+    def test_issue31315(self):
+        # There shouldn't be an assertion failure in imp.create_dynamic(),
+        # when spec.name is not a string.
+        create_dynamic = support.get_attribute(imp, 'create_dynamic')
+        class BadSpec:
+            name = None
+            origin = 'foo'
+        with self.assertRaises(TypeError):
+            create_dynamic(BadSpec())
+
 
 class ReloadTests(unittest.TestCase):
 

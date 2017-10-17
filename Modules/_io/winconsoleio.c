@@ -79,7 +79,7 @@ char _PyIO_get_console_type(PyObject *path_or_fd) {
         PyErr_Clear();
         return '\0';
     }
-    decoded_wstr = PyUnicode_AsWideCharString(decoded, NULL);
+    decoded_wstr = _PyUnicode_AsWideCharString(decoded);
     Py_CLEAR(decoded);
     if (!decoded_wstr) {
         PyErr_Clear();
@@ -101,7 +101,7 @@ char _PyIO_get_console_type(PyObject *path_or_fd) {
 
     DWORD length;
     wchar_t name_buf[MAX_PATH], *pname_buf = name_buf;
-    
+
     length = GetFullPathNameW(decoded_wstr, MAX_PATH, pname_buf, NULL);
     if (length > MAX_PATH) {
         pname_buf = PyMem_New(wchar_t, length);
@@ -305,28 +305,21 @@ _io__WindowsConsoleIO___init___impl(winconsoleio *self, PyObject *nameobj,
     self->fd = fd;
 
     if (fd < 0) {
-        PyObject *decodedname = Py_None;
-        Py_INCREF(decodedname);
+        PyObject *decodedname;
 
         int d = PyUnicode_FSDecoder(nameobj, (void*)&decodedname);
         if (!d)
             return -1;
 
-        Py_ssize_t length;
-        name = PyUnicode_AsWideCharString(decodedname, &length);
+        name = _PyUnicode_AsWideCharString(decodedname);
         console_type = _PyIO_get_console_type(decodedname);
         Py_CLEAR(decodedname);
         if (name == NULL)
             return -1;
         if (console_type == '\0') {
+            PyMem_Free(name);
             PyErr_SetString(PyExc_ValueError,
                 "Cannot open non-console file");
-            return -1;
-        }
-
-        if (wcslen(name) != length) {
-            PyMem_Free(name);
-            PyErr_SetString(PyExc_ValueError, "embedded null character");
             return -1;
         }
     }
@@ -408,7 +401,7 @@ _io__WindowsConsoleIO___init___impl(winconsoleio *self, PyObject *nameobj,
         PyErr_SetString(PyExc_ValueError,
             "Cannot open non-console file");
         goto error;
-    }    
+    }
     if (self->writable && console_type != 'w') {
         PyErr_SetString(PyExc_ValueError,
             "Cannot open console input buffer for writing");
@@ -436,8 +429,7 @@ error:
     internal_close(self);
 
 done:
-    if (name)
-        PyMem_Free(name);
+    PyMem_Free(name);
     return ret;
 }
 
@@ -1017,7 +1009,7 @@ _io__WindowsConsoleIO_write_impl(winconsoleio *self, Py_buffer *b)
     wlen = MultiByteToWideChar(CP_UTF8, 0, b->buf, len, wbuf, wlen);
     if (wlen) {
         res = WriteConsoleW(self->handle, wbuf, wlen, &n, NULL);
-        if (n < wlen) {
+        if (res && n < wlen) {
             /* Wrote fewer characters than expected, which means our
              * len value may be wrong. So recalculate it from the
              * characters that were written. As this could potentially

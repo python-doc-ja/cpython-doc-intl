@@ -1212,9 +1212,9 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
     {
         struct sockaddr_un *a = (struct sockaddr_un *) addr;
 #ifdef __linux__
-        if (a->sun_path[0] == 0) {  /* Linux abstract namespace */
-            addrlen -= offsetof(struct sockaddr_un, sun_path);
-            return PyBytes_FromStringAndSize(a->sun_path, addrlen);
+        size_t linuxaddrlen = addrlen - offsetof(struct sockaddr_un, sun_path);
+        if (linuxaddrlen > 0 && a->sun_path[0] == 0) {  /* Linux abstract namespace */
+            return PyBytes_FromStringAndSize(a->sun_path, linuxaddrlen);
         }
         else
 #endif /* linux */
@@ -1464,7 +1464,10 @@ idna_converter(PyObject *obj, struct maybe_idna *data)
         len = PyByteArray_Size(obj);
     }
     else if (PyUnicode_Check(obj)) {
-        if (PyUnicode_READY(obj) == 0 && PyUnicode_IS_COMPACT_ASCII(obj)) {
+        if (PyUnicode_READY(obj) == -1) {
+            return 0;
+        }
+        if (PyUnicode_IS_COMPACT_ASCII(obj)) {
             data->buf = PyUnicode_DATA(obj);
             len = PyUnicode_GET_LENGTH(obj);
         }
@@ -2704,7 +2707,9 @@ sock_close(PySocketSockObject *s)
         Py_BEGIN_ALLOW_THREADS
         res = SOCKETCLOSE(fd);
         Py_END_ALLOW_THREADS
-        if (res < 0) {
+        /* bpo-30319: The peer can already have closed the connection.
+           Python ignores ECONNRESET on close(). */
+        if (res < 0 && errno != ECONNRESET) {
             return s->errorhandler();
         }
     }

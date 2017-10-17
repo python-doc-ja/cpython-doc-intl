@@ -1706,6 +1706,8 @@ dequeiter_traverse(dequeiterobject *dio, visitproc visit, void *arg)
 static void
 dequeiter_dealloc(dequeiterobject *dio)
 {
+    /* bpo-31095: UnTrack is needed before calling any callbacks */
+    PyObject_GC_UnTrack(dio);
     Py_XDECREF(dio->deque);
     PyObject_GC_Del(dio);
 }
@@ -2086,6 +2088,8 @@ static PyMemberDef defdict_members[] = {
 static void
 defdict_dealloc(defdictobject *dd)
 {
+    /* bpo-31095: UnTrack is needed before calling any callbacks */
+    PyObject_GC_UnTrack(dd);
     Py_CLEAR(dd->default_factory);
     PyDict_Type.tp_dealloc((PyObject *)dd);
 }
@@ -2272,7 +2276,9 @@ _count_elements(PyObject *self, PyObject *args)
     dict_setitem = _PyType_LookupId(&PyDict_Type, &PyId___setitem__);
 
     if (mapping_get != NULL && mapping_get == dict_get &&
-        mapping_setitem != NULL && mapping_setitem == dict_setitem) {
+        mapping_setitem != NULL && mapping_setitem == dict_setitem &&
+        PyDict_Check(mapping))
+    {
         while (1) {
             /* Fast path advantages:
                    1. Eliminate double hashing

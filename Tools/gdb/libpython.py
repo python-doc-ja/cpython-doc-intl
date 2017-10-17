@@ -99,6 +99,8 @@ hexdigits = "0123456789abcdef"
 
 ENCODING = locale.getpreferredencoding()
 
+EVALFRAME = '_PyEval_EvalFrameDefault'
+
 class NullPyObjectPtr(RuntimeError):
     pass
 
@@ -362,6 +364,7 @@ class PyObjectPtr(object):
                     'set' : PySetObjectPtr,
                     'frozenset' : PySetObjectPtr,
                     'builtin_function_or_method' : PyCFunctionObjectPtr,
+                    'method-wrapper': wrapperobject,
                     }
         if tp_name in name_map:
             return name_map[tp_name]
@@ -1330,6 +1333,39 @@ class PyUnicodeObjectPtr(PyObjectPtr):
         out.write(quote)
 
 
+class wrapperobject(PyObjectPtr):
+    _typename = 'wrapperobject'
+
+    def safe_name(self):
+        try:
+            name = self.field('descr')['d_base']['name'].string()
+            return repr(name)
+        except (NullPyObjectPtr, RuntimeError):
+            return '<unknown name>'
+
+    def safe_tp_name(self):
+        try:
+            return self.field('self')['ob_type']['tp_name'].string()
+        except (NullPyObjectPtr, RuntimeError):
+            return '<unknown tp_name>'
+
+    def safe_self_addresss(self):
+        try:
+            address = long(self.field('self'))
+            return '%#x' % address
+        except (NullPyObjectPtr, RuntimeError):
+            return '<failed to get self address>'
+
+    def proxyval(self, visited):
+        name = self.safe_name()
+        tp_name = self.safe_tp_name()
+        self_address = self.safe_self_addresss()
+        return ("<method-wrapper %s of %s object at %s>"
+                % (name, tp_name, self_address))
+
+    def write_repr(self, out, visited):
+        proxy = self.proxyval(visited)
+        out.write(proxy)
 
 
 def int_from_int(gdbval):
@@ -1364,11 +1400,13 @@ class PyObjectPtrPrinter:
 
 def pretty_printer_lookup(gdbval):
     type = gdbval.type.unqualified()
-    if type.code == gdb.TYPE_CODE_PTR:
-        type = type.target().unqualified()
-        t = str(type)
-        if t in ("PyObject", "PyFrameObject", "PyUnicodeObject"):
-            return PyObjectPtrPrinter(gdbval)
+    if type.code != gdb.TYPE_CODE_PTR:
+        return None
+
+    type = type.target().unqualified()
+    t = str(type)
+    if t in ("PyObject", "PyFrameObject", "PyUnicodeObject", "wrapperobject"):
+        return PyObjectPtrPrinter(gdbval)
 
 """
 During development, I've been manually invoking the code in this way:
@@ -1456,18 +1494,18 @@ class Frame(object):
     #   - everything else
 
     def is_python_frame(self):
-        '''Is this a PyEval_EvalFrameEx frame, or some other important
+        '''Is this a _PyEval_EvalFrameDefault frame, or some other important
         frame? (see is_other_python_frame for what "important" means in this
         context)'''
-        if self.is_evalframeex():
+        if self.is_evalframe():
             return True
         if self.is_other_python_frame():
             return True
         return False
 
-    def is_evalframeex(self):
-        '''Is this a PyEval_EvalFrameEx frame?'''
-        if self._gdbframe.name() == 'PyEval_EvalFrameEx':
+    def is_evalframe(self):
+        '''Is this a _PyEval_EvalFrameDefault frame?'''
+        if self._gdbframe.name() == EVALFRAME:
             '''
             I believe we also need to filter on the inline
             struct frame_id.inline_depth, only regarding frames with
@@ -1476,7 +1514,7 @@ class Frame(object):
             So we reject those with type gdb.INLINE_FRAME
             '''
             if self._gdbframe.type() == gdb.NORMAL_FRAME:
-                # We have a PyEval_EvalFrameEx frame:
+                # We have a _PyEval_EvalFrameDefault frame:
                 return True
 
         return False
@@ -1497,11 +1535,8 @@ class Frame(object):
             return 'Garbage-collecting'
 
         # Detect invocations of PyCFunction instances:
-        older = self.older()
-        if not older:
-            return False
-
-        caller = older._gdbframe.name()
+        frame = self._gdbframe
+        caller = frame.name()
         if not caller:
             return False
 
@@ -1513,17 +1548,24 @@ class Frame(object):
             #   "self" is the (PyObject*) of the 'self'
             try:
                 # Use the prettyprinter for the func:
-                func = older._gdbframe.read_var('func')
+                func = frame.read_var('func')
                 return str(func)
             except RuntimeError:
                 return 'PyCFunction invocation (unable to read "func")'
 
         elif caller == '_PyCFunction_FastCallDict':
             try:
-                func = older._gdbframe.read_var('func_obj')
+                func = frame.read_var('func_obj')
                 return str(func)
             except RuntimeError:
                 return 'PyCFunction invocation (unable to read "func_obj")'
+
+        if caller == 'wrapper_call':
+            try:
+                func = frame.read_var('wp')
+                return str(func)
+            except RuntimeError:
+                return '<wrapper_call invocation>'
 
         # This frame isn't worth reporting:
         return False
@@ -1591,7 +1633,7 @@ class Frame(object):
         frame = cls.get_selected_frame()
 
         while frame:
-            if frame.is_evalframeex():
+            if frame.is_evalframe():
                 return frame
             frame = frame.older()
 
@@ -1599,7 +1641,7 @@ class Frame(object):
         return None
 
     def print_summary(self):
-        if self.is_evalframeex():
+        if self.is_evalframe():
             pyop = self.get_pyop()
             if pyop:
                 line = pyop.get_truncated_repr(MAX_OUTPUT_LEN)
@@ -1618,7 +1660,7 @@ class Frame(object):
                 sys.stdout.write('#%i\n' % self.get_index())
 
     def print_traceback(self):
-        if self.is_evalframeex():
+        if self.is_evalframe():
             pyop = self.get_pyop()
             if pyop:
                 pyop.print_traceback()

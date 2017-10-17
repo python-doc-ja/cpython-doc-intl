@@ -132,7 +132,7 @@ _ssl__SSLSocket_version(PySSLSocket *self, PyObject *Py_UNUSED(ignored))
     return _ssl__SSLSocket_version_impl(self);
 }
 
-#if defined(OPENSSL_NPN_NEGOTIATED)
+#if (defined(OPENSSL_NPN_NEGOTIATED) && !defined(OPENSSL_NO_NEXTPROTONEG))
 
 PyDoc_STRVAR(_ssl__SSLSocket_selected_npn_protocol__doc__,
 "selected_npn_protocol($self, /)\n"
@@ -151,7 +151,7 @@ _ssl__SSLSocket_selected_npn_protocol(PySSLSocket *self, PyObject *Py_UNUSED(ign
     return _ssl__SSLSocket_selected_npn_protocol_impl(self);
 }
 
-#endif /* defined(OPENSSL_NPN_NEGOTIATED) */
+#endif /* (defined(OPENSSL_NPN_NEGOTIATED) && !defined(OPENSSL_NO_NEXTPROTONEG)) */
 
 #if defined(HAVE_ALPN)
 
@@ -839,7 +839,7 @@ PyDoc_STRVAR(_ssl_RAND_add__doc__,
 "Mix string into the OpenSSL PRNG state.\n"
 "\n"
 "entropy (a float) is a lower bound on the entropy contained in\n"
-"string.  See RFC 1750.");
+"string.  See RFC 4086.");
 
 #define _SSL_RAND_ADD_METHODDEF    \
     {"RAND_add", (PyCFunction)_ssl_RAND_add, METH_VARARGS, _ssl_RAND_add__doc__},
@@ -1168,4 +1168,4 @@ exit:
 #ifndef _SSL_ENUM_CRLS_METHODDEF
     #define _SSL_ENUM_CRLS_METHODDEF
 #endif /* !defined(_SSL_ENUM_CRLS_METHODDEF) */
-/*[clinic end generated code: output=a859b21fe68a6115 input=a9049054013a1b77]*/
+/*[clinic end generated code: output=a8b184655068c238 input=a9049054013a1b77]*/

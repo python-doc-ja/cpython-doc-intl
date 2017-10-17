@@ -18,6 +18,10 @@
 #  include <winsock2.h>         /* struct timeval */
 #endif
 
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>           /* For W_STOPCODE */
+#endif
+
 #ifdef WITH_THREAD
 #include "pythread.h"
 #endif /* WITH_THREAD */
@@ -866,8 +870,9 @@ test_L_code(PyObject *self)
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = -1;
-    if (PyArg_ParseTuple(tuple, "L:test_L_code", &value) < 0)
+    if (!PyArg_ParseTuple(tuple, "L:test_L_code", &value)) {
         return NULL;
+    }
     if (value != 42)
         return raiseTestError("test_L_code",
             "L code returned wrong value for long 42");
@@ -880,8 +885,9 @@ test_L_code(PyObject *self)
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = -1;
-    if (PyArg_ParseTuple(tuple, "L:test_L_code", &value) < 0)
+    if (!PyArg_ParseTuple(tuple, "L:test_L_code", &value)) {
         return NULL;
+    }
     if (value != 42)
         return raiseTestError("test_L_code",
             "L code returned wrong value for int 42");
@@ -1198,8 +1204,9 @@ test_k_code(PyObject *self)
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = 0;
-    if (PyArg_ParseTuple(tuple, "k:test_k_code", &value) < 0)
+    if (!PyArg_ParseTuple(tuple, "k:test_k_code", &value)) {
         return NULL;
+    }
     if (value != ULONG_MAX)
         return raiseTestError("test_k_code",
             "k code returned wrong value for long 0xFFF...FFF");
@@ -1217,8 +1224,9 @@ test_k_code(PyObject *self)
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = 0;
-    if (PyArg_ParseTuple(tuple, "k:test_k_code", &value) < 0)
+    if (!PyArg_ParseTuple(tuple, "k:test_k_code", &value)) {
         return NULL;
+    }
     if (value != (unsigned long)-0x42)
         return raiseTestError("test_k_code",
             "k code returned wrong value for long -0xFFF..000042");
@@ -1556,11 +1564,13 @@ test_s_code(PyObject *self)
     /* These two blocks used to raise a TypeError:
      * "argument must be string without null bytes, not str"
      */
-    if (PyArg_ParseTuple(tuple, "s:test_s_code1", &value) < 0)
-    return NULL;
+    if (!PyArg_ParseTuple(tuple, "s:test_s_code1", &value)) {
+        return NULL;
+    }
 
-    if (PyArg_ParseTuple(tuple, "z:test_s_code2", &value) < 0)
-    return NULL;
+    if (!PyArg_ParseTuple(tuple, "z:test_s_code2", &value)) {
+        return NULL;
+    }
 
     Py_DECREF(tuple);
     Py_RETURN_NONE;
@@ -1571,7 +1581,7 @@ parse_tuple_and_keywords(PyObject *self, PyObject *args)
 {
     PyObject *sub_args;
     PyObject *sub_kwargs;
-    char *sub_format;
+    const char *sub_format;
     PyObject *sub_keywords;
 
     Py_ssize_t i, size;
@@ -1584,7 +1594,7 @@ parse_tuple_and_keywords(PyObject *self, PyObject *args)
 
     double buffers[8][4]; /* double ensures alignment where necessary */
 
-    if (!PyArg_ParseTuple(args, "OOyO:parse_tuple_and_keywords",
+    if (!PyArg_ParseTuple(args, "OOsO:parse_tuple_and_keywords",
         &sub_args, &sub_kwargs,
         &sub_format, &sub_keywords))
         return NULL;
@@ -1662,14 +1672,16 @@ test_u_code(PyObject *self)
     PyTuple_SET_ITEM(tuple, 0, obj);
 
     value = 0;
-    if (PyArg_ParseTuple(tuple, "u:test_u_code", &value) < 0)
+    if (!PyArg_ParseTuple(tuple, "u:test_u_code", &value)) {
         return NULL;
+    }
     if (value != PyUnicode_AS_UNICODE(obj))
         return raiseTestError("test_u_code",
             "u code returned wrong value for u'test'");
     value = 0;
-    if (PyArg_ParseTuple(tuple, "u#:test_u_code", &value, &len) < 0)
+    if (!PyArg_ParseTuple(tuple, "u#:test_u_code", &value, &len)) {
         return NULL;
+    }
     if (value != PyUnicode_AS_UNICODE(obj) ||
         len != PyUnicode_GET_SIZE(obj))
         return raiseTestError("test_u_code",
@@ -1702,8 +1714,9 @@ test_Z_code(PyObject *self)
     value2 = PyUnicode_AS_UNICODE(obj);
 
     /* Test Z for both values */
-    if (PyArg_ParseTuple(tuple, "ZZ:test_Z_code", &value1, &value2) < 0)
+    if (!PyArg_ParseTuple(tuple, "ZZ:test_Z_code", &value1, &value2)) {
         return NULL;
+    }
     if (value1 != PyUnicode_AS_UNICODE(obj))
         return raiseTestError("test_Z_code",
             "Z code returned wrong value for 'test'");
@@ -1717,9 +1730,11 @@ test_Z_code(PyObject *self)
     len2 = -1;
 
     /* Test Z# for both values */
-    if (PyArg_ParseTuple(tuple, "Z#Z#:test_Z_code", &value1, &len1,
-                         &value2, &len2) < 0)
+    if (!PyArg_ParseTuple(tuple, "Z#Z#:test_Z_code", &value1, &len1,
+                          &value2, &len2))
+    {
         return NULL;
+    }
     if (value1 != PyUnicode_AS_UNICODE(obj) ||
         len1 != PyUnicode_GET_SIZE(obj))
         return raiseTestError("test_Z_code",
@@ -2024,8 +2039,9 @@ test_empty_argparse(PyObject *self)
     tuple = PyTuple_New(0);
     if (!tuple)
         return NULL;
-    if ((result = PyArg_ParseTuple(tuple, "|:test_empty_argparse")) < 0)
+    if (!(result = PyArg_ParseTuple(tuple, "|:test_empty_argparse"))) {
         goto done;
+    }
     dict = PyDict_New();
     if (!dict)
         goto done;
@@ -2033,8 +2049,9 @@ test_empty_argparse(PyObject *self)
   done:
     Py_DECREF(tuple);
     Py_XDECREF(dict);
-    if (result < 0)
+    if (!result) {
         return NULL;
+    }
     else {
         Py_RETURN_NONE;
     }
@@ -3569,8 +3586,9 @@ test_raise_signal(PyObject* self, PyObject *args)
 {
     int signum, err;
 
-    if (PyArg_ParseTuple(args, "i:raise_signal", &signum) < 0)
+    if (!PyArg_ParseTuple(args, "i:raise_signal", &signum)) {
         return NULL;
+    }
 
     err = raise(signum);
     if (err)
@@ -4027,6 +4045,141 @@ dict_get_version(PyObject *self, PyObject *args)
 }
 
 
+static int
+fastcall_args(PyObject *args, PyObject ***stack, Py_ssize_t *nargs)
+{
+    if (args == Py_None) {
+        *stack = NULL;
+        *nargs = 0;
+    }
+    else if (PyTuple_Check(args)) {
+        *stack = &PyTuple_GET_ITEM(args, 0);
+        *nargs = PyTuple_GET_SIZE(args);
+    }
+    else {
+        PyErr_SetString(PyExc_TypeError, "args must be None or a tuple");
+        return -1;
+    }
+    return 0;
+}
+
+
+static PyObject *
+test_pyobject_fastcall(PyObject *self, PyObject *args)
+{
+    PyObject *func, *func_args;
+    PyObject **stack;
+    Py_ssize_t nargs;
+
+    if (!PyArg_ParseTuple(args, "OO", &func, &func_args)) {
+        return NULL;
+    }
+
+    if (fastcall_args(func_args, &stack, &nargs) < 0) {
+        return NULL;
+    }
+    return _PyObject_FastCall(func, stack, nargs);
+}
+
+
+static PyObject *
+test_pyobject_fastcalldict(PyObject *self, PyObject *args)
+{
+    PyObject *func, *func_args, *kwargs;
+    PyObject **stack;
+    Py_ssize_t nargs;
+
+    if (!PyArg_ParseTuple(args, "OOO", &func, &func_args, &kwargs)) {
+        return NULL;
+    }
+
+    if (fastcall_args(func_args, &stack, &nargs) < 0) {
+        return NULL;
+    }
+
+    if (kwargs == Py_None) {
+        kwargs = NULL;
+    }
+    else if (!PyDict_Check(kwargs)) {
+        PyErr_SetString(PyExc_TypeError, "kwnames must be None or a dict");
+        return NULL;
+    }
+
+    return _PyObject_FastCallDict(func, stack, nargs, kwargs);
+}
+
+
+static PyObject *
+test_pyobject_fastcallkeywords(PyObject *self, PyObject *args)
+{
+    PyObject *func, *func_args, *kwnames = NULL;
+    PyObject **stack;
+    Py_ssize_t nargs, nkw;
+
+    if (!PyArg_ParseTuple(args, "OOO", &func, &func_args, &kwnames)) {
+        return NULL;
+    }
+
+    if (fastcall_args(func_args, &stack, &nargs) < 0) {
+        return NULL;
+    }
+
+    if (kwnames == Py_None) {
+        kwnames = NULL;
+    }
+    else if (PyTuple_Check(kwnames)) {
+        nkw = PyTuple_GET_SIZE(kwnames);
+        if (nargs < nkw) {
+            PyErr_SetString(PyExc_ValueError, "kwnames longer than args");
+            return NULL;
+        }
+        nargs -= nkw;
+    }
+    else {
+        PyErr_SetString(PyExc_TypeError, "kwnames must be None or a tuple");
+        return NULL;
+    }
+    return _PyObject_FastCallKeywords(func, stack, nargs, kwnames);
+}
+
+
+static PyObject *
+raise_SIGINT_then_send_None(PyObject *self, PyObject *args)
+{
+    PyGenObject *gen;
+
+    if (!PyArg_ParseTuple(args, "O!", &PyGen_Type, &gen))
+        return NULL;
+
+    /* This is used in a test to check what happens if a signal arrives just
+       as we're in the process of entering a yield from chain (see
+       bpo-30039).
+
+       Needs to be done in C, because:
+       - we don't have a Python wrapper for raise()
+       - we need to make sure that the Python-level signal handler doesn't run
+         *before* we enter the generator frame, which is impossible in Python
+         because we check for signals before every bytecode operation.
+     */
+    raise(SIGINT);
+    return _PyGen_Send(gen, Py_None);
+}
+
+
+#ifdef W_STOPCODE
+static PyObject*
+py_w_stopcode(PyObject *self, PyObject *args)
+{
+    int sig, status;
+    if (!PyArg_ParseTuple(args, "i", &sig)) {
+        return NULL;
+    }
+    status = W_STOPCODE(sig);
+    return PyLong_FromLong(status);
+}
+#endif
+
+
 static PyMethodDef TestMethods[] = {
     {"raise_exception",         raise_exception,                 METH_VARARGS},
     {"raise_memoryerror",   (PyCFunction)raise_memoryerror,  METH_NOARGS},
@@ -4230,6 +4383,13 @@ static PyMethodDef TestMethods[] = {
     {"tracemalloc_untrack", tracemalloc_untrack, METH_VARARGS},
     {"tracemalloc_get_traceback", tracemalloc_get_traceback, METH_VARARGS},
     {"dict_get_version", dict_get_version, METH_VARARGS},
+    {"pyobject_fastcall", test_pyobject_fastcall, METH_VARARGS},
+    {"pyobject_fastcalldict", test_pyobject_fastcalldict, METH_VARARGS},
+    {"pyobject_fastcallkeywords", test_pyobject_fastcallkeywords, METH_VARARGS},
+    {"raise_SIGINT_then_send_None", raise_SIGINT_then_send_None, METH_VARARGS},
+#ifdef W_STOPCODE
+    {"W_STOPCODE", py_w_stopcode, METH_VARARGS},
+#endif
     {NULL, NULL} /* sentinel */
 };
 

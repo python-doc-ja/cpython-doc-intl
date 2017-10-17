@@ -897,8 +897,11 @@ class PyBuildExt(build_ext):
         blake2_deps.append('hashlib.h')
 
         blake2_macros = []
-        if not cross_compiling and os.uname().machine == "x86_64":
-            # Every x86_64 machine has at least SSE2.
+        if (not cross_compiling and
+                os.uname().machine == "x86_64" and
+                sys.maxsize >  2**32):
+            # Every x86_64 machine has at least SSE2.  Check for sys.maxsize
+            # in case that kernel is 64-bit but userspace is 32-bit.
             blake2_macros.append(('BLAKE2_USE_SSE', '1'))
 
         exts.append( Extension('_blake2',
@@ -1500,6 +1503,9 @@ class PyBuildExt(build_ext):
             expat_inc = [os.path.join(os.getcwd(), srcdir, 'Modules', 'expat')]
             define_macros = [
                 ('HAVE_EXPAT_CONFIG_H', '1'),
+                # bpo-30947: Python uses best available entropy sources to
+                # call XML_SetHashSalt(), expat entropy sources are not needed
+                ('XML_POOR_ENTROPY', '1'),
             ]
             expat_lib = []
             expat_sources = ['expat/xmlparse.c',
