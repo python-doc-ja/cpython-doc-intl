@@ -4127,7 +4127,7 @@ decode_utf8(struct compiling *c, const char **sPtr, const char *end)
 
 static int
 warn_invalid_escape_sequence(struct compiling *c, const node *n,
-                             char first_invalid_escape_char)
+                             unsigned char first_invalid_escape_char)
 {
     PyObject *msg = PyUnicode_FromFormat("invalid escape sequence \\%c",
                                          first_invalid_escape_char);
@@ -4136,18 +4136,19 @@ warn_invalid_escape_sequence(struct compiling *c, const node *n,
     }
     if (PyErr_WarnExplicitObject(PyExc_DeprecationWarning, msg,
                                    c->c_filename, LINENO(n),
-                                   NULL, NULL) < 0 &&
-        PyErr_ExceptionMatches(PyExc_DeprecationWarning))
+                                   NULL, NULL) < 0)
     {
-        const char *s;
+        if (PyErr_ExceptionMatches(PyExc_DeprecationWarning)) {
+            const char *s;
 
-        /* Replace the DeprecationWarning exception with a SyntaxError
-           to get a more accurate error report */
-        PyErr_Clear();
+            /* Replace the DeprecationWarning exception with a SyntaxError
+               to get a more accurate error report */
+            PyErr_Clear();
 
-        s = PyUnicode_AsUTF8(msg);
-        if (s != NULL) {
-            ast_error(c, n, s);
+            s = PyUnicode_AsUTF8(msg);
+            if (s != NULL) {
+                ast_error(c, n, s);
+            }
         }
         Py_DECREF(msg);
         return -1;

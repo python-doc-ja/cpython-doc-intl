@@ -1564,7 +1564,7 @@ class TestGetattrStatic(unittest.TestCase):
         foo.__dict__['d'] = 1
         self.assertEqual(inspect.getattr_static(foo, 'd'), 1)
 
-        # if the descriptor is a data-desciptor we should return the
+        # if the descriptor is a data-descriptor we should return the
         # descriptor
         descriptor.__set__ = lambda s, i, v: None
         self.assertEqual(inspect.getattr_static(foo, 'd'), Foo.__dict__['d'])
@@ -2021,7 +2021,7 @@ class TestSignatureObject(unittest.TestCase):
                          ((('args', ..., ..., 'var_positional'),), ...))
         self.assertEqual(self.signature(A.f3),
                          ((('args', ..., ..., 'var_positional'),), ...))
-        self.assertEqual(self.signature(A.f4), 
+        self.assertEqual(self.signature(A.f4),
                          ((('args', ..., ..., 'var_positional'),
                             ('kwargs', ..., ..., 'var_keyword')), ...))
     @cpython_only
