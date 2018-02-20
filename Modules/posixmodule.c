@@ -2385,7 +2385,7 @@ posix_listdir(PyObject *self, PyObject *args)
     if (len > 0) {
         char ch = namebuf[len-1];
         if (ch != SEP && ch != ALTSEP && ch != ':')
-            namebuf[len++] = '/';
+            namebuf[len++] = SEP;
         strcpy(namebuf + len, "*.*");
     }
 
@@ -3936,7 +3936,7 @@ posix_fork(PyObject *self, PyObject *noargs)
 #ifdef HAVE_STROPTS_H
 #include <stropts.h>
 #endif
-#endif /* defined(HAVE_OPENPTY) || defined(HAVE_FORKPTY) || defined(HAVE_DEV_PTMX */
+#endif /* defined(HAVE_OPENPTY) || defined(HAVE_FORKPTY) || defined(HAVE_DEV_PTMX) */
 
 #if defined(HAVE_OPENPTY) || defined(HAVE__GETPTY) || defined(HAVE_DEV_PTMX)
 PyDoc_STRVAR(posix_openpty__doc__,
