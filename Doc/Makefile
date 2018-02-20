@@ -211,4 +211,3 @@ autobuild-stable-html:
 .PHONY: gettext
 gettext:
 	$(SPHINXBUILD) -E -b gettext -D gettext_compact=0  -w warnings.txt -d build/.doctrees . locale/pot
-	$(PYTHON) tools/delete_pot_creation_date.py locale/pot
